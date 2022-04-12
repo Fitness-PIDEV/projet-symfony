@@ -49,14 +49,52 @@ _________________________________________________________ -->
         </div>
         <div class=\"col-md-6\" data-animate=\"fadeInDown\">
             <ul class=\"menu\">
-                <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\">Login</a>
+                ";
+        // line 10
+        if ( !$this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 11
+            echo "                <li><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+            echo "\" >Login</a>
                 </li>
-                <li><a href=\"register.html\">Register</a>
+                <li><a href=\"";
+            // line 13
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+            echo "\">Register</a>
                 </li>
-                <li><a href=\"contact.html\">Contact</a>
-                </li>
-                <li><a href=\"#\">Recently viewed</a>
-                </li>
+                ";
+        }
+        // line 16
+        echo "                ";
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 17
+            echo "                    <li><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
+            echo "\">Profile:";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17), "prenom", [], "any", false, false, false, 17), "html", null, true);
+            echo " </a></li>
+                ";
+        }
+        // line 19
+        echo "                ";
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 20
+            echo "                    <li><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+            echo "\">Déconnexion</a></li>
+                ";
+        }
+        // line 22
+        echo "                ";
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 23
+            echo "                    <li><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation");
+            echo "\">Reclamation</a></li>
+                ";
+        }
+        // line 25
+        echo "                <li>
             </ul>
         </div>
     </div>
@@ -104,11 +142,11 @@ _________________________________________________________ -->
 
             <a class=\"navbar-brand home\" href=\"index.html\" data-animate-hover=\"bounce\">
                 <img src=\"";
-        // line 64
+        // line 72
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/img/logo.png"), "html", null, true);
         echo "\" alt=\"Obaju logo\" class=\"hidden-xs\">
                 <img src=\"";
-        // line 65
+        // line 73
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/img/logo-small.png"), "html", null, true);
         echo "\" alt=\"Obaju logo\" class=\"visible-xs\"><span class=\"sr-only\">Obaju - go to homepage</span>
             </a>
@@ -426,7 +464,7 @@ _________________________________________________________ -->
 
     public function getDebugInfo()
     {
-        return array (  112 => 65,  108 => 64,  43 => 1,);
+        return array (  150 => 73,  146 => 72,  97 => 25,  91 => 23,  88 => 22,  82 => 20,  79 => 19,  71 => 17,  68 => 16,  62 => 13,  56 => 11,  54 => 10,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -440,14 +478,22 @@ _________________________________________________________ -->
         </div>
         <div class=\"col-md-6\" data-animate=\"fadeInDown\">
             <ul class=\"menu\">
-                <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\">Login</a>
+                {% if not is_granted('ROLE_USER') %}
+                <li><a href=\"{{ path('app_login') }}\" >Login</a>
                 </li>
-                <li><a href=\"register.html\">Register</a>
+                <li><a href=\"{{ path('app_register') }}\">Register</a>
                 </li>
-                <li><a href=\"contact.html\">Contact</a>
-                </li>
-                <li><a href=\"#\">Recently viewed</a>
-                </li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href=\"{{ path('app_profile') }}\">Profile:{{ app.user.prenom }} </a></li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href=\"{{ path('app_logout') }}\">Déconnexion</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href=\"{{ path('app_reclamation') }}\">Reclamation</a></li>
+                {% endif %}
+                <li>
             </ul>
         </div>
     </div>
@@ -790,6 +836,6 @@ _________________________________________________________ -->
 <!-- /#navbar -->
 
 <!-- *** NAVBAR END *** -->
-<div id=\"all\">", "includes/header.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\includes\\header.html.twig");
+<div id=\"all\">", "includes/header.html.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\templates\\includes\\header.html.twig");
     }
 }
