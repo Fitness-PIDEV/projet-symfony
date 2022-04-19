@@ -83,6 +83,6 @@ class __TwigTemplate_a076dd60fb6e0daf58e0fe91ae5f7c007ccd59a805d6039965b702f6a93
 <?xml version=\"1.0\" encoding=\"{{ _charset }}\" ?>
 
 <error code=\"{{ status_code }}\" message=\"{{ status_text }}\" />
-", "@Twig/Exception/error.xml.twig", "C:\\wamp64\\(2)\\www\\Fitness\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.xml.twig");
+", "@Twig/Exception/error.xml.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.xml.twig");
     }
 }

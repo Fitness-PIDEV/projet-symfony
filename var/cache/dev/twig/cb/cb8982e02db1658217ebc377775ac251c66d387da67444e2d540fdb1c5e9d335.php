@@ -83,6 +83,6 @@ class __TwigTemplate_bb5b2c5e5104396899bff622555f7fce028c07077624440ff0703a5bc93
 {{ status_code }} {{ status_text }}
 
 */
-", "@Twig/Exception/error.js.twig", "C:\\wamp64\\(2)\\www\\Fitness\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.js.twig");
+", "@Twig/Exception/error.js.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.js.twig");
     }
 }

@@ -183,10 +183,18 @@ class __TwigTemplate_04d26fc78fb1171f679b6fb56212db0a3cd5b75fbbc6bcbdbc00e09b01b
             <!-- Sidebar user panel (optional) -->
             <div class=\"user-panel mt-3 pb-3 mb-3 d-flex\">
                 <div class=\"image\">
-                    <img src=\"dist/img/user2-160x160.jpg\" class=\"img-circle elevation-2\" alt=\"User Image\">
+                    <img src=\"";
+        // line 144
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("photo/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 144, $this->source); })()), "user", [], "any", false, false, false, 144), "image", [], "any", false, false, false, 144))), "html", null, true);
+        echo "\" class=\"img-circle elevation-2\" alt=\"User Image\" >
                 </div>
                 <div class=\"info\">
-                    <a href=\"#\" class=\"d-block\">Alexander Pierce</a>
+                    <a href=\"";
+        // line 147
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
+        echo "\" class=\"d-block\">";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 147, $this->source); })()), "user", [], "any", false, false, false, 147), "prenom", [], "any", false, false, false, 147), "html", null, true);
+        echo "</a>
                 </div>
             </div>
 
@@ -207,10 +215,9 @@ class __TwigTemplate_04d26fc78fb1171f679b6fb56212db0a3cd5b75fbbc6bcbdbc00e09b01b
                 <ul class=\"nav nav-pills nav-sidebar flex-column\" data-widget=\"treeview\" role=\"menu\" data-accordion=\"false\">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class=\"nav-header\">EXAMPLES</li>
                     <li class=\"nav-item\">
                         <a href=\"";
-        // line 170
+        // line 169
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_index");
         echo "\" class=\"nav-link\">
                             <i class=\"nav-icon far fa-user\"></i>
@@ -222,7 +229,7 @@ class __TwigTemplate_04d26fc78fb1171f679b6fb56212db0a3cd5b75fbbc6bcbdbc00e09b01b
                     </li>
                     <li class=\"nav-item\">
                         <a href=\"";
-        // line 179
+        // line 178
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reclamation_index");
         echo "\" class=\"nav-link\">
                             <i class=\"nav-icon far fa-envelope\"></i>
@@ -259,7 +266,7 @@ class __TwigTemplate_04d26fc78fb1171f679b6fb56212db0a3cd5b75fbbc6bcbdbc00e09b01b
 
     public function getDebugInfo()
     {
-        return array (  226 => 179,  214 => 170,  43 => 1,);
+        return array (  233 => 178,  221 => 169,  194 => 147,  188 => 144,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -407,10 +414,10 @@ class __TwigTemplate_04d26fc78fb1171f679b6fb56212db0a3cd5b75fbbc6bcbdbc00e09b01b
             <!-- Sidebar user panel (optional) -->
             <div class=\"user-panel mt-3 pb-3 mb-3 d-flex\">
                 <div class=\"image\">
-                    <img src=\"dist/img/user2-160x160.jpg\" class=\"img-circle elevation-2\" alt=\"User Image\">
+                    <img src=\"{{ asset('photo/' ~ app.user.image) }}\" class=\"img-circle elevation-2\" alt=\"User Image\" >
                 </div>
                 <div class=\"info\">
-                    <a href=\"#\" class=\"d-block\">Alexander Pierce</a>
+                    <a href=\"{{ path('app_profile') }}\" class=\"d-block\">{{ app.user.prenom }}</a>
                 </div>
             </div>
 
@@ -431,7 +438,6 @@ class __TwigTemplate_04d26fc78fb1171f679b6fb56212db0a3cd5b75fbbc6bcbdbc00e09b01b
                 <ul class=\"nav nav-pills nav-sidebar flex-column\" data-widget=\"treeview\" role=\"menu\" data-accordion=\"false\">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class=\"nav-header\">EXAMPLES</li>
                     <li class=\"nav-item\">
                         <a href=\"{{ path('user_index') }}\" class=\"nav-link\">
                             <i class=\"nav-icon far fa-user\"></i>

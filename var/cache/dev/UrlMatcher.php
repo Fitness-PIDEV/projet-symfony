@@ -18,8 +18,12 @@ return [
         '/admin/reclamation' => [[['_route' => 'reclamation_index', '_controller' => 'App\\Controller\\ReclamationController::listrec'], null, ['GET' => 0], null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'user_index', '_controller' => 'App\\Controller\\RegistrationController::index'], null, ['GET' => 0], null, false, false, null]],
+        '/reset-password' => [[['_route' => 'app_forgot_password_request', '_controller' => 'App\\Controller\\ResetPasswordController::request'], null, null, null, false, false, null]],
+        '/reset-password/check-email' => [[['_route' => 'app_check_email', '_controller' => 'App\\Controller\\ResetPasswordController::checkEmail'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
+        '/captcha-handler' => [[['_route' => 'captcha_handler', '_controller' => 'CaptchaBundle:CaptchaHandler:index'], null, ['GET' => 0], null, false, false, null]],
+        '/simple-captcha-handler' => [[['_route' => 'simple_captcha_handler', '_controller' => 'CaptchaBundle:SimpleCaptchaHandler:index'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -38,10 +42,13 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/deletereclamation/([^/]++)(*:196)'
-                .'|/([^/]++)/edit(*:218)'
-                .'|/back/role/([^/]++)(*:245)'
-                .'|/delete/([^/]++)(*:269)'
+                .'|/([^/]++)/profile_edit(*:191)'
+                .'|/deletereclamation/([^/]++)(*:226)'
+                .'|/admin/([^/]++)/valide(*:256)'
+                .'|/([^/]++)/edit(*:278)'
+                .'|/back/role/([^/]++)(*:305)'
+                .'|/delete/([^/]++)(*:329)'
+                .'|/reset\\-password/reset(?:/([^/]++))?(*:373)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -52,11 +59,14 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        196 => [[['_route' => 'rec_delete', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        218 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\RegistrationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        245 => [[['_route' => 'role_user', '_controller' => 'App\\Controller\\RegistrationController::userRole'], ['id'], null, null, false, true, null]],
-        269 => [
-            [['_route' => 'user_delete', '_controller' => 'App\\Controller\\RegistrationController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        191 => [[['_route' => 'profile_edit', '_controller' => 'App\\Controller\\ProfileController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        226 => [[['_route' => 'rec_delete', '_controller' => 'App\\Controller\\ReclamationController::deletereclamation'], ['id'], null, null, false, true, null]],
+        256 => [[['_route' => 'reclamation_valide', '_controller' => 'App\\Controller\\ReclamationController::valide'], ['id'], null, null, false, false, null]],
+        278 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\RegistrationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        305 => [[['_route' => 'role_user', '_controller' => 'App\\Controller\\RegistrationController::userRole'], ['id'], null, null, false, true, null]],
+        329 => [[['_route' => 'user_delete', '_controller' => 'App\\Controller\\RegistrationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        373 => [
+            [['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

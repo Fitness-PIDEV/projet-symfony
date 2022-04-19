@@ -337,6 +337,6 @@ class __TwigTemplate_48f8ab154b4462f918e7b0e1b09e23908057a67156ae80c3b1b51052203
 {{ include('includes/footer.html.twig') }}
 
 </body>
-</html>", "base-front.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\base-front.html.twig");
+</html>", "base-front.html.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\templates\\base-front.html.twig");
     }
 }

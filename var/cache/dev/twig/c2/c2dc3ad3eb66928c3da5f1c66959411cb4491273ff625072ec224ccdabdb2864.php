@@ -71,6 +71,6 @@ class __TwigTemplate_01b58bce5fffc55fcd11158d741c227cbab79df9b107b96ad5d28a7729a
         <?php echo \$view['form']->row(\$child) ?>
     <?php endif; ?>
 <?php endforeach; ?>
-", "@Framework/Form/form_rows.html.php", "C:\\wamp64\\(2)\\www\\Fitness\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_rows.html.php");
+", "@Framework/Form/form_rows.html.php", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_rows.html.php");
     }
 }

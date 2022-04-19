@@ -46,8 +46,8 @@ _________________________________________________________ -->
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-md-3 col-sm-6\">
-                <h4>Pages</h4>
-
+                <h4>About us</h4>
+                <hr>
                 <ul>
                     <li><a href=\"text.html\">About us</a>
                     </li>
@@ -59,68 +59,45 @@ _________________________________________________________ -->
                     </li>
                 </ul>
 
-                <hr>
+
+
+
+
+            </div>
+            <!-- /.col-md-3 -->
+
+            <div class=\"col-md-3 col-sm-6\">
 
                 <h4>User section</h4>
-
+                <hr>
                 <ul>
-                    <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\">Login</a>
+                    <li><a href=\"";
+        // line 32
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        echo "\" >Login</a>
                     </li>
-                    <li><a href=\"register.html\">Regiter</a>
+                    <li><a href=\"";
+        // line 34
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+        echo "\">Register</a>
                     </li>
                 </ul>
 
                 <hr class=\"hidden-md hidden-lg hidden-sm\">
-
             </div>
             <!-- /.col-md-3 -->
 
             <div class=\"col-md-3 col-sm-6\">
 
-                <h4>Top categories</h4>
+                <h4>Get in touch</h4>
+                <hr>
+                    Esprit, Ariana Soghra
+                    <br>fitnessesprit8@gmail.com
+                    <br>+216 22 236 895
 
-                <h5>Men</h5>
 
-                <ul>
-                    <li><a href=\"category.html\">T-shirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Shirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Accessories</a>
-                    </li>
-                </ul>
-
-                <h5>Ladies</h5>
-                <ul>
-                    <li><a href=\"category.html\">T-shirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Skirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Pants</a>
-                    </li>
-                    <li><a href=\"category.html\">Accessories</a>
-                    </li>
-                </ul>
-
-                <hr class=\"hidden-md hidden-lg\">
-
-            </div>
-            <!-- /.col-md-3 -->
-
-            <div class=\"col-md-3 col-sm-6\">
-
-                <h4>Where to find us</h4>
-
-                <p><strong>Obaju Ltd.</strong>
-                    <br>13/25 New Avenue
-                    <br>New Heaven
-                    <br>45Y 73J
-                    <br>England
-                    <br>
-                    <strong>Great Britain</strong>
                 </p>
 
-                <a href=\"contact.html\">Go to contact page</a>
 
                 <hr class=\"hidden-md hidden-lg\">
 
@@ -133,7 +110,7 @@ _________________________________________________________ -->
 
                 <h4>Get the news</h4>
 
-                <p class=\"text-muted\">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <p class=\"text-muted\">Subscribe to our mailing list to get the latest updates.</p>
 
                 <form>
                     <div class=\"input-group\">
@@ -180,14 +157,10 @@ _________________________________________________________ -->
 <div id=\"copyright\">
     <div class=\"container\">
         <div class=\"col-md-6\">
-            <p class=\"pull-left\">© 2015 Your name goes here.</p>
+            <p class=\"pull-left\">Copyrights © 2022 - Fitness, All Rights Reserved.</p>
 
         </div>
-        <div class=\"col-md-6\">
-            <p class=\"pull-right\">Template by <a href=\"https://bootstrapious.com/e-commerce-templates\">Bootstrapious</a> & <a href=\"https://fity.cz\">Fity</a>
-                <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-            </p>
-        </div>
+
     </div>
 </div>
 <!-- *** COPYRIGHT END *** -->
@@ -205,9 +178,14 @@ _________________________________________________________ -->
         return "includes/footer.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  43 => 1,);
+        return array (  81 => 34,  76 => 32,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -218,8 +196,8 @@ _________________________________________________________ -->
     <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-md-3 col-sm-6\">
-                <h4>Pages</h4>
-
+                <h4>About us</h4>
+                <hr>
                 <ul>
                     <li><a href=\"text.html\">About us</a>
                     </li>
@@ -231,68 +209,39 @@ _________________________________________________________ -->
                     </li>
                 </ul>
 
-                <hr>
+
+
+
+
+            </div>
+            <!-- /.col-md-3 -->
+
+            <div class=\"col-md-3 col-sm-6\">
 
                 <h4>User section</h4>
-
+                <hr>
                 <ul>
-                    <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\">Login</a>
+                    <li><a href=\"{{ path('app_login') }}\" >Login</a>
                     </li>
-                    <li><a href=\"register.html\">Regiter</a>
+                    <li><a href=\"{{ path('app_register') }}\">Register</a>
                     </li>
                 </ul>
 
                 <hr class=\"hidden-md hidden-lg hidden-sm\">
-
             </div>
             <!-- /.col-md-3 -->
 
             <div class=\"col-md-3 col-sm-6\">
 
-                <h4>Top categories</h4>
+                <h4>Get in touch</h4>
+                <hr>
+                    Esprit, Ariana Soghra
+                    <br>fitnessesprit8@gmail.com
+                    <br>+216 22 236 895
 
-                <h5>Men</h5>
 
-                <ul>
-                    <li><a href=\"category.html\">T-shirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Shirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Accessories</a>
-                    </li>
-                </ul>
-
-                <h5>Ladies</h5>
-                <ul>
-                    <li><a href=\"category.html\">T-shirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Skirts</a>
-                    </li>
-                    <li><a href=\"category.html\">Pants</a>
-                    </li>
-                    <li><a href=\"category.html\">Accessories</a>
-                    </li>
-                </ul>
-
-                <hr class=\"hidden-md hidden-lg\">
-
-            </div>
-            <!-- /.col-md-3 -->
-
-            <div class=\"col-md-3 col-sm-6\">
-
-                <h4>Where to find us</h4>
-
-                <p><strong>Obaju Ltd.</strong>
-                    <br>13/25 New Avenue
-                    <br>New Heaven
-                    <br>45Y 73J
-                    <br>England
-                    <br>
-                    <strong>Great Britain</strong>
                 </p>
 
-                <a href=\"contact.html\">Go to contact page</a>
 
                 <hr class=\"hidden-md hidden-lg\">
 
@@ -305,7 +254,7 @@ _________________________________________________________ -->
 
                 <h4>Get the news</h4>
 
-                <p class=\"text-muted\">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <p class=\"text-muted\">Subscribe to our mailing list to get the latest updates.</p>
 
                 <form>
                     <div class=\"input-group\">
@@ -352,17 +301,13 @@ _________________________________________________________ -->
 <div id=\"copyright\">
     <div class=\"container\">
         <div class=\"col-md-6\">
-            <p class=\"pull-left\">© 2015 Your name goes here.</p>
+            <p class=\"pull-left\">Copyrights © 2022 - Fitness, All Rights Reserved.</p>
 
         </div>
-        <div class=\"col-md-6\">
-            <p class=\"pull-right\">Template by <a href=\"https://bootstrapious.com/e-commerce-templates\">Bootstrapious</a> & <a href=\"https://fity.cz\">Fity</a>
-                <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-            </p>
-        </div>
+
     </div>
 </div>
 <!-- *** COPYRIGHT END *** -->
-</div>", "includes/footer.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\includes\\footer.html.twig");
+</div>", "includes/footer.html.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\templates\\includes\\footer.html.twig");
     }
 }

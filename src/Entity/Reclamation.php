@@ -44,9 +44,14 @@ class Reclamation
     private $iduser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\ManyToOne(targetEntity=User::class )
      */
     private $users;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $etat;
 
     public function getUsers(): ?User
     {
@@ -122,6 +127,18 @@ class Reclamation
     public function setIduser(int $iduser): void
     {
         $this->iduser = $iduser;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(int $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
     }
 
 

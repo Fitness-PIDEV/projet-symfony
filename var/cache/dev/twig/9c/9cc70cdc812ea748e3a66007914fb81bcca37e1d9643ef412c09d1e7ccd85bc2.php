@@ -69,6 +69,6 @@ class __TwigTemplate_841468d38a097dfb3c1e7fa76f6cffb089196d2fb4d6786e5008e5dff60
 <?php echo \$view['form']->rest(\$form) ?>
 <?php endif ?>
 </form>
-", "@Framework/Form/form_end.html.php", "C:\\wamp64\\(2)\\www\\Fitness\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_end.html.php");
+", "@Framework/Form/form_end.html.php", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_end.html.php");
     }
 }

@@ -191,6 +191,6 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\templates\\base.html.twig");
     }
 }

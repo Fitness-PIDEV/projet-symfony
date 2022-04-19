@@ -14,14 +14,22 @@
                     <div class="card-body">
                         <table class="table table-striped projects">
                             <tr>
-                                <th>titre</th>
-                                <th>message</th>
+                                <th>TITRE</th>
+                                <th>MESSAGE</th>
+                                <th>ETAT</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                             {% for rec in reclamation %}
                                 <tr>
                                     <td>{{rec.titre|upper}}</td>
                                     <td>{{rec.message}}</td>
+                                    {% if rec.etat == 0 %}
+                                        <td><label class="badge badge-warning">En cours</label></td>
+                                    {% else %}
+                                        <td><label class="badge badge-success">validé</label></td>
+                                    {% endif %}
+                                    <td><a href="{{ path('reclamation_valide', {"id": rec.id}) }}"><i class="btn btn-success" style="color:mediumseagreen"></i></a></td>
                                     <td class="project-actions text-right">
                                        <a class="btn btn-danger btn-sm" href="{{ path('rec_delete', {'id': rec.id}) }}">
                                             <i class="fas fa-trash">

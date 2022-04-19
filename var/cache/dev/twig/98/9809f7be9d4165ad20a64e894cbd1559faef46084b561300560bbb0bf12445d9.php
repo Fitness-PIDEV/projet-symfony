@@ -87,6 +87,6 @@ class __TwigTemplate_0e0ac9d8dbc441f9f76ca64c7052f0deb17614e1c6abbc731ccc0e42806
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-</div>", "includes/footer-back.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\includes\\footer-back.html.twig");
+</div>", "includes/footer-back.html.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\templates\\includes\\footer-back.html.twig");
     }
 }

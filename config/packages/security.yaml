@@ -39,4 +39,5 @@ security:
         -  { path: ^/back/role, roles: ROLE_ADMIN }
         - { path: ^/delete, roles: ROLE_ADMIN }
         - { path: ^/reclamation, roles: ROLE_USER }
+        - { path: ^/admin/reclamation, roles: ROLE_ADMIN }
 

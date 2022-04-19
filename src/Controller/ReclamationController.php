@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ReclamationController extends AbstractController
 {
@@ -49,17 +50,28 @@ class ReclamationController extends AbstractController
         ]);
     }
     /**
-     * @Route("/deletereclamation/{id}", name="rec_delete", methods={"POST"})
+     * @Route("/deletereclamation/{id}", name="rec_delete")
      */
-    public function delete(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager): Response
+    public function deletereclamation($id)
     {
-        if ($this->isCsrfTokenValid('delete'.$reclamation->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($reclamation);
-            $entityManager->flush();
-
-        }
-
-        return $this->redirectToRoute('reclamation_index', [], Response::HTTP_SEE_OTHER);
+        $id= $this->getDoctrine()->
+        getRepository(Reclamation::class)->find($id);
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($id);
+        $em->flush();
+        return $this->redirectToRoute("reclamation_index");
+    }
+    /**
+     * @Route("/admin/{id}/valide", name="reclamation_valide")
+     * @param Reclamation $reclamation
+     * @return RedirectResponse
+     */
+    public function valide (Reclamation $reclamation): RedirectResponse
+    {
+        $reclamation->setEtat(1);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        return $this->redirectToRoute("reclamation_index");
     }
 
 }

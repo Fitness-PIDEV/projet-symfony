@@ -388,6 +388,6 @@ class __TwigTemplate_91835844a381ee637a340dce200ffb87c9b88e334141e87a948aceff1a6
 </body>
 
 </html>
-", "base-back.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\base-back.html.twig");
+", "base-back.html.twig", "C:\\Users\\Ahmed\\OneDrive\\Bureau\\projet-symfony user\\templates\\base-back.html.twig");
     }
 }

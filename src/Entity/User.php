@@ -40,6 +40,24 @@ class User implements UserInterface
      */
     private $password;
 
+    protected $captchaCode;
+
+    /**
+     * @return mixed
+     */
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    /**
+     * @param mixed $captchaCode
+     */
+    public function setCaptchaCode($captchaCode): void
+    {
+        $this->captchaCode = $captchaCode;
+    }
+
     /**
      * @Assert\NotBlank(message="le nom est necessaire")
      * @ORM\Column(type="string", length=255)

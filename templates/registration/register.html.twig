@@ -12,7 +12,7 @@
                     <div class="box">
 
 
-                        <h1>Register</h1>
+                        <h1 style="text-align: center;">Inscription</h1>
 
                         {{ form_start(registrationForm,{'attr': {'novalidate': 'novalidate'}}) }}
                         {{ form_row(registrationForm.nom) }}
@@ -25,8 +25,9 @@
                         {{ form_row(registrationForm.image) }}
                         {{ form_row(registrationForm.role) }}
                         {{ form_row(registrationForm.agreeTerms) }}
+                        {{ form_row(registrationForm.captchaCode) }}
 
-                        <button type="submit" class="btn btn-primary" style="margin: 20px 0px 0px 185px" ><i class="fa fa-user-md"></i>S'inscrire</button>
+                        <button type="submit" class="btn btn-primary" style="margin: 20px 0px 0px 185px" ><i class="fa fa-user"></i>S'inscrire</button>
                         {{ form_end(registrationForm) }}
                     </div>
                 </div>
