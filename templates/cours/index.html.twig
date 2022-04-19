@@ -1,0 +1,96 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Hello CoursController!{% endblock %}
+
+{% block body %}
+
+    <div class="content-wrapper" style="min-height: 1335.69px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Gestion Cours</h1>
+                    </div>
+
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <!-- /.row -->
+
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Liste des Cours</h3>
+
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th> nomCours </th>
+                                        <th> dureeCours </th>
+                                        <th> salle </th>
+                                        <th> nomCoach </th>
+
+                                        <th>delete</th>
+                                        <th>update</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr {% for g in tabcours %}>
+                                        <td> {{ g.nomCours }}</td>
+                                        <td> {{ g.dureeCours }}</td>
+                                        <td> {{ g.salle }}</td>
+                                        <td> {{ g.nomCoach }}</td>
+
+                                        <td>  <a  href=" {{ path('coursDelete', {"id": g.id}) }} " onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')" class="btn btn-outline-primary"> delete</a>
+                                        <td>  <a  href=" {{ path('updatecours', {"id": g.id}) }} "  class="btn btn-outline-primary"> update</a>
+
+                                        </td>
+
+                                    </tr {% endfor %}>
+
+
+                                    </tbody>
+                                </table>
+                                <!-- /.endTable -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+            <div class="input-group">
+                <a href="{{ path('addCours') }}"class="btn btn-outline-primary">Ajouter cours</a>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+
+{% endblock %}
