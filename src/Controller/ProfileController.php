@@ -5,14 +5,17 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use App\Form\ResetPasswordType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class ProfileController extends AbstractController
+class ProfileController extends Controller
 {
     /**
      * @Route("/profile", name="app_profile")
@@ -52,5 +55,37 @@ class ProfileController extends AbstractController
             'user' => $user,
             'registrationForm' => $form->createView(),
         ]);
+    }
+    /**
+     * @Route("/profile/reset-password", name="profile_password")
+     */
+    public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $form = $this->createForm(ResetPasswordType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $passwordEncoder = $this->get('security.password_encoder');
+            $oldPassword = $request->request->get('reset_password')['oldPassword'];
+            // Si l'ancien mot de passe est bon
+            if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
+                $newEncodedPassword = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($newEncodedPassword);
+                $em->persist($user);
+                $em->flush();
+                $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
+                return $this->redirectToRoute('app_profile');
+            } else {
+                $form->addError(new FormError('Ancien mot de passe incorrect'));
+            }
+
+        }
+        return $this->render('profile/resetPassword.html.twig', array(
+
+            'form' => $form->createView(),
+
+        ));
     }
 }

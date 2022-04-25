@@ -7,9 +7,12 @@ use App\Entity\User;
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -66,11 +69,18 @@ class ReclamationController extends AbstractController
      * @param Reclamation $reclamation
      * @return RedirectResponse
      */
-    public function valide (Reclamation $reclamation): RedirectResponse
+    public function valide (Reclamation $reclamation, MailerInterface $mailer): RedirectResponse
     {
+        $user=$reclamation->getUsers()->getEmail();
         $reclamation->setEtat(1);
         $em = $this->getDoctrine()->getManager();
         $em->flush();
+        $email = (new TemplatedEmail())
+            ->from(new Address('fitnessesprit8@gmail.com', 'Fitness Bot'))
+            ->to($user)
+            ->subject('Votre reclamation')
+            ->htmlTemplate('reclamation/email.html.twig');
+        $mailer->send($email);
         return $this->redirectToRoute("reclamation_index");
     }
 

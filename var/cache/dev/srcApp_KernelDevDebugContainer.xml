@@ -24,6 +24,9 @@
       <parameter key="CaptchaBundle">Captcha\Bundle\CaptchaBundle\CaptchaBundle</parameter>
       <parameter key="SymfonyCastsResetPasswordBundle">SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle</parameter>
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
+      <parameter key="FOSCKEditorBundle">FOS\CKEditorBundle\FOSCKEditorBundle</parameter>
+      <parameter key="FMElfinderBundle">FM\ElfinderBundle\FMElfinderBundle</parameter>
+      <parameter key="StofDoctrineExtensionsBundle">Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -85,6 +88,18 @@
       <parameter key="SwiftmailerBundle" type="collection">
         <parameter key="path">C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\symfony\swiftmailer-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SwiftmailerBundle</parameter>
+      </parameter>
+      <parameter key="FOSCKEditorBundle" type="collection">
+        <parameter key="path">C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\friendsofsymfony\ckeditor-bundle\src</parameter>
+        <parameter key="namespace">FOS\CKEditorBundle</parameter>
+      </parameter>
+      <parameter key="FMElfinderBundle" type="collection">
+        <parameter key="path">C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\helios-ag\fm-elfinder-bundle\src</parameter>
+        <parameter key="namespace">FM\ElfinderBundle</parameter>
+      </parameter>
+      <parameter key="StofDoctrineExtensionsBundle" type="collection">
+        <parameter key="path">C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\stof\doctrine-extensions-bundle\src</parameter>
+        <parameter key="namespace">Stof\DoctrineExtensionsBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -163,8 +178,10 @@
     <parameter key="serializer.mapping.cache.file">C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\var\cache\dev/serialization.php</parameter>
     <parameter key="twig.exception_listener.controller">null</parameter>
     <parameter key="twig.form.resources" type="collection">
+      <parameter>@FMElfinder/Form/elfinder_widget.html.twig</parameter>
       <parameter>@Captcha/captcha.html.twig</parameter>
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>@FOSCKEditor/Form/ckeditor_widget.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -294,6 +311,170 @@
       <parameter key="default">swiftmailer.mailer.default</parameter>
     </parameter>
     <parameter key="swiftmailer.default_mailer">default</parameter>
+    <parameter key="fm_elfinder.loader">FM\ElfinderBundle\Loader\ElFinderLoader</parameter>
+    <parameter key="fm_elfinder.configurator">FM\ElfinderBundle\Configuration\ElFinderConfigurationReader</parameter>
+    <parameter key="elfinder.form.type.class">FM\ElfinderBundle\Form\Type\ElFinderType</parameter>
+    <parameter key="fm_elfinder" type="collection">
+      <parameter key="instances" type="collection">
+        <parameter key="default" type="collection">
+          <parameter key="connector" type="collection">
+            <parameter key="roots" type="collection">
+              <parameter key="uploads" type="collection">
+                <parameter key="driver">LocalFileSystem</parameter>
+                <parameter key="path">uploads</parameter>
+                <parameter key="volume_id">0</parameter>
+                <parameter key="autoload">false</parameter>
+                <parameter key="phash"></parameter>
+                <parameter key="trash_hash"></parameter>
+                <parameter key="locale"></parameter>
+                <parameter key="i18n_folder_name">false</parameter>
+                <parameter key="mime_detect">auto</parameter>
+                <parameter key="mimefile"></parameter>
+                <parameter key="security_voter"></parameter>
+                <parameter key="start_path"></parameter>
+                <parameter key="encoding">UTF-8</parameter>
+                <parameter key="url"></parameter>
+                <parameter key="alias"></parameter>
+                <parameter key="img_lib">auto</parameter>
+                <parameter key="tmb_path">.tmb</parameter>
+                <parameter key="tmb_path_mode">511</parameter>
+                <parameter key="tmb_url"></parameter>
+                <parameter key="tmb_size">48</parameter>
+                <parameter key="tmb_crop">true</parameter>
+                <parameter key="tmb_bg_color">#ffffff</parameter>
+                <parameter key="quarantine">null</parameter>
+                <parameter key="copy_overwrite">true</parameter>
+                <parameter key="copy_join">true</parameter>
+                <parameter key="copy_from">true</parameter>
+                <parameter key="copy_to">true</parameter>
+                <parameter key="upload_overwrite">true</parameter>
+                <parameter key="fileMode">420</parameter>
+                <parameter key="upload_allow" type="collection">
+                  <parameter>image</parameter>
+                </parameter>
+                <parameter key="upload_deny" type="collection">
+                  <parameter>all</parameter>
+                </parameter>
+                <parameter key="upload_order" type="collection">
+                  <parameter>deny</parameter>
+                  <parameter>allow</parameter>
+                </parameter>
+                <parameter key="upload_max_size">0</parameter>
+                <parameter key="upload_max_conn">3</parameter>
+                <parameter key="defaults" type="collection">
+                  <parameter key="read">true</parameter>
+                  <parameter key="write">true</parameter>
+                </parameter>
+                <parameter key="attributes" type="collection"/>
+                <parameter key="accepted_name">/^\w[\w\s\.\%\-]*$/u</parameter>
+                <parameter key="show_hidden">false</parameter>
+                <parameter key="disabled_commands" type="collection"/>
+                <parameter key="tree_deep">0</parameter>
+                <parameter key="check_subfolders">1</parameter>
+                <parameter key="separator">\</parameter>
+                <parameter key="date_format">j M Y H:i</parameter>
+                <parameter key="time_format">H:i</parameter>
+                <parameter key="archive_mimes" type="collection"/>
+                <parameter key="archivers" type="collection">
+                  <parameter key="enabled">false</parameter>
+                  <parameter key="create" type="collection"/>
+                  <parameter key="extract" type="collection"/>
+                </parameter>
+                <parameter key="flysystem" type="collection">
+                  <parameter key="enabled">false</parameter>
+                  <parameter key="filesystem"></parameter>
+                  <parameter key="type"></parameter>
+                  <parameter key="adapter_service"></parameter>
+                </parameter>
+                <parameter key="glide_url"></parameter>
+                <parameter key="glide_key"></parameter>
+                <parameter key="plugins" type="collection"/>
+                <parameter key="driver_options" type="collection"/>
+                <parameter key="dropbox2_settings" type="collection">
+                  <parameter key="enabled">false</parameter>
+                  <parameter key="aliasFormat">%s@Dropbox</parameter>
+                  <parameter key="path">/</parameter>
+                  <parameter key="separator">/</parameter>
+                  <parameter key="acceptedName">%s@Dropbox</parameter>
+                  <parameter key="rootCssClass">elfinder-navbar-root-dropbox</parameter>
+                  <parameter key="getThumbSize">medium</parameter>
+                </parameter>
+                <parameter key="box_settings" type="collection">
+                  <parameter key="enabled">false</parameter>
+                  <parameter key="root">Box.com</parameter>
+                  <parameter key="path">/</parameter>
+                  <parameter key="separator">/</parameter>
+                  <parameter key="tmbPath"></parameter>
+                  <parameter key="tmbURL"></parameter>
+                  <parameter key="tmpPath"></parameter>
+                  <parameter key="acceptedName">#^[^/\?*:|"&lt;&gt;]*[^./\?*:|"&lt;&gt;]$#</parameter>
+                  <parameter key="rootCssClass">elfinder-navbar-root-box</parameter>
+                </parameter>
+                <parameter key="onedrive_settings" type="collection">
+                  <parameter key="enabled">false</parameter>
+                  <parameter key="root">OneDrive.com</parameter>
+                  <parameter key="OneDriveApiClient"></parameter>
+                  <parameter key="path">/</parameter>
+                  <parameter key="separator">/</parameter>
+                  <parameter key="tmbPath"></parameter>
+                  <parameter key="tmbURL"></parameter>
+                  <parameter key="tmpPath"></parameter>
+                  <parameter key="acceptedName">#^[^/\?*:|"&lt;&gt;]*[^./\?*:|"&lt;&gt;]$#</parameter>
+                  <parameter key="rootCssClass">elfinder-navbar-root-onedrive</parameter>
+                  <parameter key="useApiThumbnail">true</parameter>
+                </parameter>
+                <parameter key="ftp_settings" type="collection">
+                  <parameter key="enabled">false</parameter>
+                </parameter>
+                <parameter key="mysql_settings" type="collection">
+                  <parameter key="enabled">false</parameter>
+                  <parameter key="port">null</parameter>
+                  <parameter key="socket">null</parameter>
+                  <parameter key="files_table">elfinder_file</parameter>
+                  <parameter key="tmbPath"></parameter>
+                  <parameter key="tmpPath"></parameter>
+                  <parameter key="rootCssClass">elfinder-navbar-root-sql</parameter>
+                  <parameter key="noSessionCache">hasdirs</parameter>
+                </parameter>
+              </parameter>
+            </parameter>
+            <parameter key="debug">false</parameter>
+            <parameter key="binds" type="collection"/>
+            <parameter key="plugins" type="collection"/>
+          </parameter>
+          <parameter key="locale">null</parameter>
+          <parameter key="cors_support">false</parameter>
+          <parameter key="editor">simple</parameter>
+          <parameter key="editor_template">null</parameter>
+          <parameter key="fullscreen">true</parameter>
+          <parameter key="multi_home_folder">false</parameter>
+          <parameter key="folder_separator"></parameter>
+          <parameter key="theme">smoothness</parameter>
+          <parameter key="tinymce_popup_path"></parameter>
+          <parameter key="relative_path">true</parameter>
+          <parameter key="path_prefix">/</parameter>
+          <parameter key="where_is_multi" type="collection"/>
+          <parameter key="visible_mime_types" type="collection"/>
+        </parameter>
+      </parameter>
+      <parameter key="configuration_provider">fm_elfinder.configurator.default</parameter>
+      <parameter key="assets_path">assets</parameter>
+      <parameter key="loader">fm_elfinder.loader.default</parameter>
+    </parameter>
+    <parameter key="stof_doctrine_extensions.listener.timestampable.class">Gedmo\Timestampable\TimestampableListener</parameter>
+    <parameter key="stof_doctrine_extensions.default_locale">en_US</parameter>
+    <parameter key="stof_doctrine_extensions.translation_fallback">false</parameter>
+    <parameter key="stof_doctrine_extensions.persist_default_translation">false</parameter>
+    <parameter key="stof_doctrine_extensions.skip_translation_on_load">false</parameter>
+    <parameter key="stof_doctrine_extensions.listener.translatable.class">Gedmo\Translatable\TranslatableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.blameable.class">Gedmo\Blameable\BlameableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.sluggable.class">Gedmo\Sluggable\SluggableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.tree.class">Gedmo\Tree\TreeListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.loggable.class">Gedmo\Loggable\LoggableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.sortable.class">Gedmo\Sortable\SortableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.softdeleteable.class">Gedmo\SoftDeleteable\SoftDeleteableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.uploadable.class">Gedmo\Uploadable\UploadableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.reference_integrity.class">Gedmo\ReferenceIntegrity\ReferenceIntegrityListener</parameter>
     <parameter key="maker.compatible_check.doctrine.supports_attributes">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
@@ -390,10 +571,6 @@
     </service>
     <service id="App\Controller\ProfileController" class="App\Controller\ProfileController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ProfileController"/>
-      </call>
     </service>
     <service id="App\Controller\ReclamationController" class="App\Controller\ReclamationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -438,6 +615,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ResetPasswordType" class="App\Form\ResetPasswordType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true">
@@ -883,6 +1063,7 @@
         <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
         <argument></argument>
+        <argument>FOS\CKEditorBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>App\Form\ChangePasswordFormType</argument>
@@ -890,12 +1071,15 @@
         <argument>App\Form\ReclamationType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>App\Form\ResetPasswordRequestFormType</argument>
+        <argument>App\Form\ResetPasswordType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
         <argument>Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType</argument>
         <argument>Captcha\Bundle\CaptchaBundle\Form\Type\SimpleCaptchaType</argument>
+        <argument>FOS\CKEditorBundle\Form\Type\CKEditorType</argument>
+        <argument>FM\ElfinderBundle\Form\Type\ElFinderType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1225,7 +1409,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.TJfVqBl"/>
+      <argument type="service" id=".service_locator.ygta5uS"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1857,6 +2041,12 @@
           <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/SymfonyCastsResetPasswordBundle/translations</argument>
           <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\symfony\swiftmailer-bundle/translations</argument>
           <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/SwiftmailerBundle/translations</argument>
+          <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\friendsofsymfony\ckeditor-bundle\src/translations</argument>
+          <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/FOSCKEditorBundle/translations</argument>
+          <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\helios-ag\fm-elfinder-bundle\src/translations</argument>
+          <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/FMElfinderBundle/translations</argument>
+          <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\stof\doctrine-extensions-bundle\src/translations</argument>
+          <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/StofDoctrineExtensionsBundle/translations</argument>
           <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -1895,6 +2085,12 @@
             <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/SymfonyCastsResetPasswordBundle/translations</argument>
             <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\symfony\swiftmailer-bundle/translations</argument>
             <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/SwiftmailerBundle/translations</argument>
+            <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\friendsofsymfony\ckeditor-bundle\src/translations</argument>
+            <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/FOSCKEditorBundle/translations</argument>
+            <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\helios-ag\fm-elfinder-bundle\src/translations</argument>
+            <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/FMElfinderBundle/translations</argument>
+            <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\stof\doctrine-extensions-bundle\src/translations</argument>
+            <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/StofDoctrineExtensionsBundle/translations</argument>
             <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\src/Resources/translations</argument>
           </argument>
         </argument>
@@ -3307,6 +3503,12 @@
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="fos_ck_editor.twig_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="twig.extension.fm_elfinder_init"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3442,6 +3644,22 @@
       <call method="addPath">
         <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>!Swiftmailer</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\friendsofsymfony\ckeditor-bundle\src/Resources/views</argument>
+        <argument>FOSCKEditor</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\friendsofsymfony\ckeditor-bundle\src/Resources/views</argument>
+        <argument>!FOSCKEditor</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\helios-ag\fm-elfinder-bundle\src/Resources/views</argument>
+        <argument>FMElfinder</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user\vendor\helios-ag\fm-elfinder-bundle\src/Resources/views</argument>
+        <argument>!FMElfinder</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\Ahmed\OneDrive\Bureau\projet-symfony user/templates</argument>
@@ -4075,7 +4293,10 @@
       </argument>
     </service>
     <service id="doctrine.dbal.default_connection.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
-      <argument type="service" id=".service_locator.bpvU51K"/>
+      <argument type="service" id=".service_locator.qNVlZx2"/>
+      <argument type="collection">
+        <argument>stof_doctrine_extensions.listener.timestampable</argument>
+      </argument>
       <call method="addEventListener">
         <argument type="collection">
           <argument>loadClassMetadata</argument>
@@ -5397,8 +5618,282 @@
     <service id="swiftmailer.mailer.default.plugin.messagelogger" class="Swift_Plugins_MessageLogger" public="true">
       <tag name="swiftmailer.default.plugin"/>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProfileController" class="App\Controller\ProfileController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProfileController" class="App\Controller\ProfileController" autowire="true" abstract="true"/>
+    <service id="fos_ck_editor.builder.json_builder" class="FOS\CKEditorBundle\Builder\JsonBuilder">
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="fos_ck_editor.command.installer" class="FOS\CKEditorBundle\Command\CKEditorInstallerCommand">
+      <tag name="console.command" command="ckeditor:install"/>
+      <argument type="service" id="fos_ck_editor.installer"/>
+      <call method="setName">
+        <argument>ckeditor:install</argument>
+      </call>
+    </service>
+    <service id="fos_ck_editor.configuration" class="FOS\CKEditorBundle\Config\CKEditorConfiguration">
+      <argument type="collection">
+        <argument key="configs" type="collection">
+          <argument key="main_config" type="collection">
+            <argument key="toolbar" type="collection">
+              <argument type="collection">
+                <argument key="name">styles</argument>
+                <argument key="items" type="collection">
+                  <argument>Bold</argument>
+                  <argument>Italic</argument>
+                  <argument>Underline</argument>
+                  <argument>Strike</argument>
+                  <argument>Blockquote</argument>
+                  <argument>-</argument>
+                  <argument>Link</argument>
+                  <argument>-</argument>
+                  <argument>RemoveFormat</argument>
+                  <argument>-</argument>
+                  <argument>NumberedList</argument>
+                  <argument>BulletedList</argument>
+                  <argument>-</argument>
+                  <argument>Outdent</argument>
+                  <argument>Indent</argument>
+                  <argument>-</argument>
+                  <argument>-</argument>
+                  <argument>JustifyLeft</argument>
+                  <argument>JustifyCenter</argument>
+                  <argument>JustifyRight</argument>
+                  <argument>JustifyBlock</argument>
+                  <argument>-</argument>
+                  <argument>Image</argument>
+                  <argument>Table</argument>
+                  <argument>-</argument>
+                  <argument>Styles</argument>
+                  <argument>Format</argument>
+                  <argument>Font</argument>
+                  <argument>FontSize</argument>
+                  <argument>-</argument>
+                  <argument>TextColor</argument>
+                  <argument>BGColor</argument>
+                  <argument>Source</argument>
+                </argument>
+              </argument>
+            </argument>
+          </argument>
+        </argument>
+        <argument key="enable">true</argument>
+        <argument key="async">false</argument>
+        <argument key="auto_inline">true</argument>
+        <argument key="inline">false</argument>
+        <argument key="autoload">true</argument>
+        <argument key="jquery">false</argument>
+        <argument key="require_js">false</argument>
+        <argument key="input_sync">false</argument>
+        <argument key="base_path">bundles/fosckeditor/</argument>
+        <argument key="js_path">bundles/fosckeditor/ckeditor.js</argument>
+        <argument key="jquery_path">bundles/fosckeditor/adapters/jquery.js</argument>
+        <argument key="default_config">null</argument>
+        <argument key="plugins" type="collection"/>
+        <argument key="styles" type="collection"/>
+        <argument key="templates" type="collection"/>
+        <argument key="filebrowsers" type="collection"/>
+        <argument key="toolbars" type="collection">
+          <argument key="configs" type="collection"/>
+          <argument key="items" type="collection"/>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_ck_editor.form.type" class="FOS\CKEditorBundle\Form\Type\CKEditorType">
+      <tag name="form.type"/>
+      <argument type="service" id="fos_ck_editor.configuration"/>
+    </service>
+    <service id="fos_ck_editor.installer" class="FOS\CKEditorBundle\Installer\CKEditorInstaller"/>
+    <service id="fos_ck_editor.renderer" class="FOS\CKEditorBundle\Renderer\CKEditorRenderer">
+      <argument type="service" id="fos_ck_editor.builder.json_builder"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="assets.packages"/>
+      <argument type="service" id="request_stack"/>
+      <argument type="service" id="twig"/>
+      <argument type="expression">container.hasParameter('locale') ? parameter('locale') : null</argument>
+    </service>
+    <service id="fos_ck_editor.twig_extension" class="FOS\CKEditorBundle\Twig\CKEditorExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="fos_ck_editor.renderer"/>
+    </service>
+    <service id="fm_elfinder.configurator.default" class="FM\ElfinderBundle\Configuration\ElFinderConfigurationReader">
+      <argument>%fm_elfinder%</argument>
+      <argument type="service" id="request_stack"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="fm_elfinder.loader.default" class="FM\ElfinderBundle\Loader\ElFinderLoader" autowire="true">
+      <argument type="service" id="fm_elfinder.configurator.default"/>
+    </service>
+    <service id="twig.extension.fm_elfinder_init" class="FM\ElfinderBundle\Twig\Extension\FMElfinderExtension">
+      <tag name="twig.extension" alias="fm_elfinder_init"/>
+      <argument type="service" id="twig"/>
+    </service>
+    <service id="FM\ElfinderBundle\Controller\ElFinderController" class="FM\ElfinderBundle\Controller\ElFinderController" public="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="twig"/>
+      <argument type="collection">
+        <argument key="instances" type="collection">
+          <argument key="default" type="collection">
+            <argument key="connector" type="collection">
+              <argument key="roots" type="collection">
+                <argument key="uploads" type="collection">
+                  <argument key="driver">LocalFileSystem</argument>
+                  <argument key="path">uploads</argument>
+                  <argument key="volume_id">0</argument>
+                  <argument key="autoload">false</argument>
+                  <argument key="phash"></argument>
+                  <argument key="trash_hash"></argument>
+                  <argument key="locale"></argument>
+                  <argument key="i18n_folder_name">false</argument>
+                  <argument key="mime_detect">auto</argument>
+                  <argument key="mimefile"></argument>
+                  <argument key="security_voter"></argument>
+                  <argument key="start_path"></argument>
+                  <argument key="encoding">UTF-8</argument>
+                  <argument key="url"></argument>
+                  <argument key="alias"></argument>
+                  <argument key="img_lib">auto</argument>
+                  <argument key="tmb_path">.tmb</argument>
+                  <argument key="tmb_path_mode">511</argument>
+                  <argument key="tmb_url"></argument>
+                  <argument key="tmb_size">48</argument>
+                  <argument key="tmb_crop">true</argument>
+                  <argument key="tmb_bg_color">#ffffff</argument>
+                  <argument key="quarantine">null</argument>
+                  <argument key="copy_overwrite">true</argument>
+                  <argument key="copy_join">true</argument>
+                  <argument key="copy_from">true</argument>
+                  <argument key="copy_to">true</argument>
+                  <argument key="upload_overwrite">true</argument>
+                  <argument key="fileMode">420</argument>
+                  <argument key="upload_allow" type="collection">
+                    <argument>image</argument>
+                  </argument>
+                  <argument key="upload_deny" type="collection">
+                    <argument>all</argument>
+                  </argument>
+                  <argument key="upload_order" type="collection">
+                    <argument>deny</argument>
+                    <argument>allow</argument>
+                  </argument>
+                  <argument key="upload_max_size">0</argument>
+                  <argument key="upload_max_conn">3</argument>
+                  <argument key="defaults" type="collection">
+                    <argument key="read">true</argument>
+                    <argument key="write">true</argument>
+                  </argument>
+                  <argument key="attributes" type="collection"/>
+                  <argument key="accepted_name">/^\w[\w\s\.\%\-]*$/u</argument>
+                  <argument key="show_hidden">false</argument>
+                  <argument key="disabled_commands" type="collection"/>
+                  <argument key="tree_deep">0</argument>
+                  <argument key="check_subfolders">1</argument>
+                  <argument key="separator">\</argument>
+                  <argument key="date_format">j M Y H:i</argument>
+                  <argument key="time_format">H:i</argument>
+                  <argument key="archive_mimes" type="collection"/>
+                  <argument key="archivers" type="collection">
+                    <argument key="enabled">false</argument>
+                    <argument key="create" type="collection"/>
+                    <argument key="extract" type="collection"/>
+                  </argument>
+                  <argument key="flysystem" type="collection">
+                    <argument key="enabled">false</argument>
+                    <argument key="filesystem"></argument>
+                    <argument key="type"></argument>
+                    <argument key="adapter_service"></argument>
+                  </argument>
+                  <argument key="glide_url"></argument>
+                  <argument key="glide_key"></argument>
+                  <argument key="plugins" type="collection"/>
+                  <argument key="driver_options" type="collection"/>
+                  <argument key="dropbox2_settings" type="collection">
+                    <argument key="enabled">false</argument>
+                    <argument key="aliasFormat">%s@Dropbox</argument>
+                    <argument key="path">/</argument>
+                    <argument key="separator">/</argument>
+                    <argument key="acceptedName">%s@Dropbox</argument>
+                    <argument key="rootCssClass">elfinder-navbar-root-dropbox</argument>
+                    <argument key="getThumbSize">medium</argument>
+                  </argument>
+                  <argument key="box_settings" type="collection">
+                    <argument key="enabled">false</argument>
+                    <argument key="root">Box.com</argument>
+                    <argument key="path">/</argument>
+                    <argument key="separator">/</argument>
+                    <argument key="tmbPath"></argument>
+                    <argument key="tmbURL"></argument>
+                    <argument key="tmpPath"></argument>
+                    <argument key="acceptedName">#^[^/\?*:|"&lt;&gt;]*[^./\?*:|"&lt;&gt;]$#</argument>
+                    <argument key="rootCssClass">elfinder-navbar-root-box</argument>
+                  </argument>
+                  <argument key="onedrive_settings" type="collection">
+                    <argument key="enabled">false</argument>
+                    <argument key="root">OneDrive.com</argument>
+                    <argument key="OneDriveApiClient"></argument>
+                    <argument key="path">/</argument>
+                    <argument key="separator">/</argument>
+                    <argument key="tmbPath"></argument>
+                    <argument key="tmbURL"></argument>
+                    <argument key="tmpPath"></argument>
+                    <argument key="acceptedName">#^[^/\?*:|"&lt;&gt;]*[^./\?*:|"&lt;&gt;]$#</argument>
+                    <argument key="rootCssClass">elfinder-navbar-root-onedrive</argument>
+                    <argument key="useApiThumbnail">true</argument>
+                  </argument>
+                  <argument key="ftp_settings" type="collection">
+                    <argument key="enabled">false</argument>
+                  </argument>
+                  <argument key="mysql_settings" type="collection">
+                    <argument key="enabled">false</argument>
+                    <argument key="port">null</argument>
+                    <argument key="socket">null</argument>
+                    <argument key="files_table">elfinder_file</argument>
+                    <argument key="tmbPath"></argument>
+                    <argument key="tmpPath"></argument>
+                    <argument key="rootCssClass">elfinder-navbar-root-sql</argument>
+                    <argument key="noSessionCache">hasdirs</argument>
+                  </argument>
+                </argument>
+              </argument>
+              <argument key="debug">false</argument>
+              <argument key="binds" type="collection"/>
+              <argument key="plugins" type="collection"/>
+            </argument>
+            <argument key="locale">null</argument>
+            <argument key="cors_support">false</argument>
+            <argument key="editor">simple</argument>
+            <argument key="editor_template">null</argument>
+            <argument key="fullscreen">true</argument>
+            <argument key="multi_home_folder">false</argument>
+            <argument key="folder_separator"></argument>
+            <argument key="theme">smoothness</argument>
+            <argument key="tinymce_popup_path"></argument>
+            <argument key="relative_path">true</argument>
+            <argument key="path_prefix">/</argument>
+            <argument key="where_is_multi" type="collection"/>
+            <argument key="visible_mime_types" type="collection"/>
+          </argument>
+        </argument>
+        <argument key="configuration_provider">fm_elfinder.configurator.default</argument>
+        <argument key="assets_path">assets</argument>
+        <argument key="loader">fm_elfinder.loader.default</argument>
+      </argument>
+    </service>
+    <service id="fm_elfinder.form.type" class="FM\ElfinderBundle\Form\Type\ElFinderType">
+      <tag name="form.type"/>
+    </service>
+    <service id="fm_elfinder.command.installer" class="FM\ElfinderBundle\Command\ElFinderInstallerCommand">
+      <tag name="console.command" command="elfinder:install"/>
+      <argument type="service" id="filesystem"/>
+      <argument type="service" id="parameter_bag"/>
+      <call method="setName">
+        <argument>elfinder:install</argument>
+      </call>
+    </service>
+    <service id="stof_doctrine_extensions.listener.timestampable" class="Gedmo\Timestampable\TimestampableListener" public="false">
+      <tag name="doctrine.event_subscriber" connection="default"/>
+      <call method="setAnnotationReader">
+        <argument type="service" id="annotations.cached_reader"/>
+      </call>
+    </service>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\ProfileController" class="App\Controller\ProfileController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProfileController" class="App\Controller\ProfileController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
@@ -5422,6 +5917,8 @@
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPasswordType" class="App\Form\ResetPasswordType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ResetPasswordType" class="App\Form\ResetPasswordType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ResetPasswordRequestRepository" class="App\Repository\ResetPasswordRequestRepository" autowire="true" abstract="true"/>
@@ -5716,6 +6213,12 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.0iUl0Wo.App\Entity\User"/>
       </argument>
     </service>
+    <service id=".service_locator.ccM2MGC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="passwordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
     <service id=".service_locator.RLVVpop" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5728,16 +6231,18 @@
         <argument key="reclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Yrn9bQF" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.qm5Ks.Z" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="reclamation" type="service_closure" id=".errored..service_locator.Yrn9bQF.App\Entity\Reclamation"/>
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
+        <argument key="reclamation" type="service_closure" id=".errored..service_locator.qm5Ks.Z.App\Entity\Reclamation"/>
       </argument>
     </service>
-    <service id=".service_locator.CoC3nYr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.mLd7rT3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
         <argument key="userPasswordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
@@ -5745,6 +6250,12 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.kxx4hsb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="users" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.tejTvi1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5767,33 +6278,48 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.UvGURMO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.cgflarz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="eventDispatcher" type="service_closure" id="debug.event_dispatcher"/>
+        <argument key="httpKernel" type="service_closure" id="http_kernel"/>
+        <argument key="loader" type="service_closure" id="fm_elfinder.loader.default"/>
+        <argument key="session" type="service_closure" id="session"/>
+      </argument>
+    </service>
+    <service id=".service_locator.tbJp74u" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ProfileController::edit" type="service_closure" id=".service_locator.0iUl0Wo"/>
+        <argument key="App\Controller\ProfileController::resetPassword" type="service_closure" id=".service_locator.ccM2MGC"/>
         <argument key="App\Controller\ReclamationController::index" type="service_closure" id=".service_locator.RLVVpop"/>
         <argument key="App\Controller\ReclamationController::listrec" type="service_closure" id=".service_locator.bJ2nGqo"/>
-        <argument key="App\Controller\ReclamationController::valide" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\ReclamationController::valide" type="service_closure" id=".service_locator.qm5Ks.Z"/>
+        <argument key="App\Controller\RegistrationController::activation" type="service_closure" id=".service_locator.kxx4hsb"/>
         <argument key="App\Controller\RegistrationController::delete" type="service_closure" id=".service_locator.0iUl0Wo"/>
         <argument key="App\Controller\RegistrationController::edit" type="service_closure" id=".service_locator.0iUl0Wo"/>
         <argument key="App\Controller\RegistrationController::index" type="service_closure" id=".service_locator.1UuH9tO"/>
-        <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.CoC3nYr"/>
+        <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.mLd7rT3"/>
         <argument key="App\Controller\RegistrationController::userRole" type="service_closure" id=".service_locator.0iUl0Wo"/>
         <argument key="App\Controller\ResetPasswordController::request" type="service_closure" id=".service_locator.tejTvi1"/>
         <argument key="App\Controller\ResetPasswordController::reset" type="service_closure" id=".service_locator.IHMIEEW"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.g.xob4v"/>
+        <argument key="FM\ElfinderBundle\Controller\ElFinderController::load" type="service_closure" id=".service_locator.cgflarz"/>
         <argument key="App\Controller\ProfileController:edit" type="service_closure" id=".service_locator.0iUl0Wo"/>
+        <argument key="App\Controller\ProfileController:resetPassword" type="service_closure" id=".service_locator.ccM2MGC"/>
         <argument key="App\Controller\ReclamationController:index" type="service_closure" id=".service_locator.RLVVpop"/>
         <argument key="App\Controller\ReclamationController:listrec" type="service_closure" id=".service_locator.bJ2nGqo"/>
-        <argument key="App\Controller\ReclamationController:valide" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\ReclamationController:valide" type="service_closure" id=".service_locator.qm5Ks.Z"/>
+        <argument key="App\Controller\RegistrationController:activation" type="service_closure" id=".service_locator.kxx4hsb"/>
         <argument key="App\Controller\RegistrationController:delete" type="service_closure" id=".service_locator.0iUl0Wo"/>
         <argument key="App\Controller\RegistrationController:edit" type="service_closure" id=".service_locator.0iUl0Wo"/>
         <argument key="App\Controller\RegistrationController:index" type="service_closure" id=".service_locator.1UuH9tO"/>
-        <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.CoC3nYr"/>
+        <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.mLd7rT3"/>
         <argument key="App\Controller\RegistrationController:userRole" type="service_closure" id=".service_locator.0iUl0Wo"/>
         <argument key="App\Controller\ResetPasswordController:request" type="service_closure" id=".service_locator.tejTvi1"/>
         <argument key="App\Controller\ResetPasswordController:reset" type="service_closure" id=".service_locator.IHMIEEW"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.g.xob4v"/>
+        <argument key="FM\ElfinderBundle\Controller\ElFinderController:load" type="service_closure" id=".service_locator.cgflarz"/>
       </argument>
     </service>
     <service id=".service_locator.u8z4W6F" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5859,7 +6385,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.TJfVqBl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.ygta5uS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ChangePasswordFormType" type="service_closure" id="App\Form\ChangePasswordFormType"/>
@@ -5867,8 +6393,11 @@
         <argument key="App\Form\ReclamationType" type="service_closure" id="App\Form\ReclamationType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="App\Form\ResetPasswordRequestFormType" type="service_closure" id="App\Form\ResetPasswordRequestFormType"/>
+        <argument key="App\Form\ResetPasswordType" type="service_closure" id="App\Form\ResetPasswordType"/>
         <argument key="Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType" type="service_closure" id="captcha.form.type"/>
         <argument key="Captcha\Bundle\CaptchaBundle\Form\Type\SimpleCaptchaType" type="service_closure" id="simple_captcha.form.type"/>
+        <argument key="FM\ElfinderBundle\Form\Type\ElFinderType" type="service_closure" id="fm_elfinder.form.type"/>
+        <argument key="FOS\CKEditorBundle\Form\Type\CKEditorType" type="service_closure" id="fos_ck_editor.form.type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -6029,10 +6558,11 @@
       <configurator class="Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\AddDebugLogProcessorPass" method="configureLogger"/>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
-    <service id=".service_locator.bpvU51K" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.qNVlZx2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
+        <argument key="stof_doctrine_extensions.listener.timestampable" type="service_closure" id="stof_doctrine_extensions.listener.timestampable"/>
       </argument>
     </service>
     <service id=".service_locator.63Gs7cD" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6093,12 +6623,6 @@
         <argument key="session" type="service_closure" id="session" on-invalid="ignore"/>
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
-    </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\ProfileController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\ProfileController"/>
-      <argument>App\Controller\ProfileController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
     <service id=".service_locator.vdmMuyE.App\Controller\ReclamationController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ReclamationController"/>
@@ -6270,12 +6794,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.UvGURMO"/>
+      <argument type="service" id=".service_locator.tbJp74u"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.UvGURMO"/>
+      <argument type="service" id=".service_locator.tbJp74u"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6287,9 +6811,9 @@
     </service>
     <service id=".errored..service_locator.0iUl0Wo.App\Entity\User" class="App\Entity\User"/>
     <service id=".errored..service_locator.RLVVpop.Symfony\Component\Security\Core\User\UserInterface" class="Symfony\Component\Security\Core\User\UserInterface"/>
-    <service id=".errored..service_locator.Yrn9bQF.App\Entity\Reclamation" class="App\Entity\Reclamation"/>
+    <service id=".errored..service_locator.qm5Ks.Z.App\Entity\Reclamation" class="App\Entity\Reclamation"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
-      <argument type="service" id=".service_locator.Oiu2LFW"/>
+      <argument type="service" id=".service_locator.2OcAvEY"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -6363,6 +6887,8 @@
         <argument key="debug:swiftmailer">swiftmailer.command.debug</argument>
         <argument key="swiftmailer:email:send">swiftmailer.command.new_email</argument>
         <argument key="swiftmailer:spool:send">swiftmailer.command.send_email</argument>
+        <argument key="ckeditor:install">fos_ck_editor.command.installer</argument>
+        <argument key="elfinder:install">fm_elfinder.command.installer</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -6388,7 +6914,7 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.Oiu2LFW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.2OcAvEY" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service_closure" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
@@ -6451,6 +6977,8 @@
         <argument key="doctrine_migrations.up_to_date_command" type="service_closure" id="doctrine_migrations.up_to_date_command"/>
         <argument key="doctrine_migrations.version_command" type="service_closure" id="doctrine_migrations.version_command"/>
         <argument key="doctrine_migrations.versions_command" type="service_closure" id="doctrine_migrations.versions_command"/>
+        <argument key="fm_elfinder.command.installer" type="service_closure" id="fm_elfinder.command.installer"/>
+        <argument key="fos_ck_editor.command.installer" type="service_closure" id="fos_ck_editor.command.installer"/>
         <argument key="maker.auto_command.make_auth" type="service_closure" id="maker.auto_command.make_auth"/>
         <argument key="maker.auto_command.make_command" type="service_closure" id="maker.auto_command.make_command"/>
         <argument key="maker.auto_command.make_controller" type="service_closure" id="maker.auto_command.make_controller"/>
@@ -6696,9 +7224,12 @@
     <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport.spool" public="true"/>
     <service id="Swift_Mailer" alias="swiftmailer.mailer.default" public="false"/>
     <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
+    <service id="FM\ElfinderBundle\Loader\ElFinderLoader" alias="fm_elfinder.loader.default"/>
+    <service id="fm_elfinder.configurator" alias="fm_elfinder.configurator.default"/>
+    <service id="fm_elfinder.loader" alias="fm_elfinder.loader.default" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.UvGURMO"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.tbJp74u"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -6713,7 +7244,7 @@
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id=".service_locator.xkmSecI" alias=".service_locator.u8z4W6F" public="false"/>
-    <service id=".service_locator.wSGNz0P" alias=".service_locator.TJfVqBl" public="false"/>
+    <service id=".service_locator.e26af6E" alias=".service_locator.ygta5uS" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

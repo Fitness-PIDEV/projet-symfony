@@ -14,6 +14,7 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/profile' => [[['_route' => 'app_profile', '_controller' => 'App\\Controller\\ProfileController::index'], null, null, null, false, false, null]],
+        '/profile/reset-password' => [[['_route' => 'profile_password', '_controller' => 'App\\Controller\\ProfileController::resetPassword'], null, null, null, false, false, null]],
         '/reclamation' => [[['_route' => 'app_reclamation', '_controller' => 'App\\Controller\\ReclamationController::index'], null, null, null, false, false, null]],
         '/admin/reclamation' => [[['_route' => 'reclamation_index', '_controller' => 'App\\Controller\\ReclamationController::listrec'], null, ['GET' => 0], null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
@@ -22,6 +23,7 @@ return [
         '/reset-password/check-email' => [[['_route' => 'app_check_email', '_controller' => 'App\\Controller\\ResetPasswordController::checkEmail'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
+        '/elfinder.main.js' => [[['_route' => 'ef_main_js', '_controller' => 'FM\\ElfinderBundle\\Controller\\ElFinderController::mainJS'], null, null, null, false, false, null]],
         '/captcha-handler' => [[['_route' => 'captcha_handler', '_controller' => 'CaptchaBundle:CaptchaHandler:index'], null, ['GET' => 0], null, false, false, null]],
         '/simple-captcha-handler' => [[['_route' => 'simple_captcha_handler', '_controller' => 'CaptchaBundle:SimpleCaptchaHandler:index'], null, ['GET' => 0], null, false, false, null]],
     ],
@@ -48,7 +50,12 @@ return [
                 .'|/([^/]++)/edit(*:278)'
                 .'|/back/role/([^/]++)(*:305)'
                 .'|/delete/([^/]++)(*:329)'
-                .'|/reset\\-password/reset(?:/([^/]++))?(*:373)'
+                .'|/activation/([^/]++)(*:357)'
+                .'|/reset\\-password/reset(?:/([^/]++))?(*:401)'
+                .'|/e(?'
+                    .'|fconnect(?:/([^/]++)(?:/([^/]++))?)?(*:450)'
+                    .'|lfinder(?:/([^/]++)(?:/([^/]++))?)?(*:493)'
+                .')'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -65,8 +72,11 @@ return [
         278 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\RegistrationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         305 => [[['_route' => 'role_user', '_controller' => 'App\\Controller\\RegistrationController::userRole'], ['id'], null, null, false, true, null]],
         329 => [[['_route' => 'user_delete', '_controller' => 'App\\Controller\\RegistrationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        373 => [
-            [['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null],
+        357 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\RegistrationController::activation'], ['token'], null, null, false, true, null]],
+        401 => [[['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null]],
+        450 => [[['_route' => 'ef_connect', '_controller' => 'FM\\ElfinderBundle\\Controller\\ElFinderController::load', 'instance' => 'default', 'homeFolder' => ''], ['instance', 'homeFolder'], null, null, false, true, null]],
+        493 => [
+            [['_route' => 'elfinder', '_controller' => 'FM\\ElfinderBundle\\Controller\\ElFinderController::show', 'instance' => 'default', 'homeFolder' => ''], ['instance', 'homeFolder'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

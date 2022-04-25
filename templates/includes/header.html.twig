@@ -1,11 +1,11 @@
 <!-- *** TOPBAR ***
 _________________________________________________________ -->
-<div id="top">
+{#  <div id="top">
     <div class="container">
         <div class="col-md-6 offer" data-animate="fadeInDown">
             <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a>
         </div>
-        <div class="col-md-6" data-animate="fadeInDown">
+         <div class="col-md-6" data-animate="fadeInDown">
             <ul class="menu">
                 {% if not is_granted('ROLE_USER') %}
                 <li><a href="{{ path('app_login') }}" >Login</a>
@@ -14,7 +14,7 @@ _________________________________________________________ -->
                 </li>
                 {% endif %}
                 {% if is_granted('ROLE_USER') %}
-                    <li><a href="{{ path('app_profile') }}">Profile:{{ app.user.prenom }} </a></li>
+                    <li><a href="{{ path('app_profile') }}">Profile: {{ app.user.prenom }} </a></li>
                 {% endif %}
                 {% if is_granted('ROLE_USER') %}
                     <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
@@ -24,7 +24,7 @@ _________________________________________________________ -->
                 {% endif %}
                 <li>
             </ul>
-        </div>
+        </div> #}
     </div>
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -322,6 +322,23 @@ _________________________________________________________ -->
                         </li>
                     </ul>
                 </li>
+                {% if not is_granted('ROLE_USER') %}
+                <li class=""><a href="{{ path('app_login') }}">Se connecter</a>
+                </li>
+                    <li class=""><a href="{{ path('app_register') }}"><i class=" fa-id-card"></i>S'inscrire</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <li class=""><a href="{{ path('app_reclamation') }}">Reclamation</a></li>
+                {% if is_granted('ROLE_USER') %}
+                    <li class=""><a href="{{ path('app_profile') }}">Profile: {{ app.user.prenom }} </a></li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <li class=""><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                {% endif %}
+
+                {% endif %}
+                <li>
             </ul>
 
         </div>

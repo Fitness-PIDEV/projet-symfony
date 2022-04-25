@@ -93,6 +93,28 @@ class User implements UserInterface
      */
     private $role;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $activation_token;
+    private $PlainPassword;
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->PlainPassword;
+    }
+
+    /**
+     * @param mixed $PlainPassword
+     */
+    public function setPlainPassword($PlainPassword): void
+    {
+        $this->PlainPassword = $PlainPassword;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -230,6 +252,18 @@ class User implements UserInterface
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->activation_token;
+    }
+
+    public function setActivationToken(?string $activation_token): self
+    {
+        $this->activation_token = $activation_token;
 
         return $this;
     }

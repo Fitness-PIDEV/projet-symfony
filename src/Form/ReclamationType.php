@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reclamation;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +20,7 @@ class ReclamationType extends AbstractType
                     "class" =>"form-control"
                 ]
             ])
-            ->add('message',TextType::class,[
+            ->add('message',CKEditorType::class,[
                 "attr" =>[
                     "class" =>"form-control"
                 ]
