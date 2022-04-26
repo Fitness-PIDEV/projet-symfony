@@ -88,7 +88,7 @@ class __TwigTemplate_dd9b706c103364b1320300bb6d67592d058a600fbec527a012851828f98
                     <a href=\"https://symfony.com/doc/";
         // line 20
         echo twig_escape_filter($this->env, twig_constant("Symfony\\Component\\HttpKernel\\Kernel::VERSION"), "html", null, true);
-        echo "/index.html\">
+        echo "/affichagefront.html.twig\">
                         <span class=\"icon\">";
         // line 21
         echo twig_include($this->env, $context, "@Twig/images/icon-book.svg");
@@ -245,7 +245,7 @@ class __TwigTemplate_dd9b706c103364b1320300bb6d67592d058a600fbec527a012851828f98
                 <h1 class=\"logo\">{{ include('@Twig/images/symfony-logo.svg') }} Symfony Exception</h1>
 
                 <div class=\"help-link\">
-                    <a href=\"https://symfony.com/doc/{{ constant('Symfony\\\\Component\\\\HttpKernel\\\\Kernel::VERSION') }}/index.html\">
+                    <a href=\"https://symfony.com/doc/{{ constant('Symfony\\\\Component\\\\HttpKernel\\\\Kernel::VERSION') }}/affichagefront.html.twig\">
                         <span class=\"icon\">{{ include('@Twig/images/icon-book.svg') }}</span>
                         <span class=\"hidden-xs-down\">Symfony</span> Docs
                     </a>

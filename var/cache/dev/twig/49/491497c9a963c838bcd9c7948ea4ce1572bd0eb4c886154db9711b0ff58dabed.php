@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* categorie/index.html.twig */
+/* categorie/affichagefront.html.twig.twig */
 class __TwigTemplate_078b647b7802584221c6ab04a846b98e4b39f148ffd645cc01e99d5338f618f8 extends Template
 {
     private $source;
@@ -40,12 +40,12 @@ class __TwigTemplate_078b647b7802584221c6ab04a846b98e4b39f148ffd645cc01e99d5338f
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "categorie/index.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "categorie/affichagefront.html.twig.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "categorie/index.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "categorie/affichagefront.html.twig.twig"));
 
-        $this->parent = $this->loadTemplate("base-back.html.twig", "categorie/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base-back.html.twig", "categorie/affichagefront.html.twig.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -200,7 +200,7 @@ class __TwigTemplate_078b647b7802584221c6ab04a846b98e4b39f148ffd645cc01e99d5338f
 
     public function getTemplateName()
     {
-        return "categorie/index.html.twig";
+        return "categorie/affichagefront.html.twig.twig";
     }
 
     public function isTraitable()
@@ -302,6 +302,6 @@ class __TwigTemplate_078b647b7802584221c6ab04a846b98e4b39f148ffd645cc01e99d5338f
         <!-- /.content -->
     </div>
 {% endblock %}
-", "categorie/index.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\categorie\\index.html.twig");
+", "categorie/affichagefront.html.twig.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\categorie\\affichagefront.html.twig.twig");
     }
 }

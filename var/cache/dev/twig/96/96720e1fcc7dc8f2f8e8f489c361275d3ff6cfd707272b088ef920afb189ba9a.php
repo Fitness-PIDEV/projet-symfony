@@ -158,7 +158,9 @@ class __TwigTemplate_b8c6c9b03524aece5d5091dc2b3da1bb601530eb03d11680127aad59b18
                                     <th> quantiteProduit </th>
                                     <th> description </th>
                                     <th> imageProduit </th>
-
+                                    <th> etat </th>
+                                    <th> valider </th>
+                                    <th> refuser </th>
                                     <th>delete</th>
                                     <th>update</th>
 
@@ -169,39 +171,62 @@ class __TwigTemplate_b8c6c9b03524aece5d5091dc2b3da1bb601530eb03d11680127aad59b18
 
 
                                 <tr ";
-        // line 73
+        // line 75
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["tabproduit"]) || array_key_exists("tabproduit", $context) ? $context["tabproduit"] : (function () { throw new RuntimeError('Variable "tabproduit" does not exist.', 73, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["tabproduit"]) || array_key_exists("tabproduit", $context) ? $context["tabproduit"] : (function () { throw new RuntimeError('Variable "tabproduit" does not exist.', 75, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["g"]) {
             echo ">
                                     <td> ";
-            // line 74
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "nomProduit", [], "any", false, false, false, 74), "html", null, true);
-            echo "</td>
-                                    <td> ";
-            // line 75
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "prixProduit", [], "any", false, false, false, 75), "html", null, true);
-            echo "</td>
-                                    <td> ";
             // line 76
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "quantiteProduit", [], "any", false, false, false, 76), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "nomProduit", [], "any", false, false, false, 76), "html", null, true);
+            echo "</td>
+                                    <td> ";
+            // line 77
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "prixProduit", [], "any", false, false, false, 77), "html", null, true);
+            echo "</td>
+                                    <td> ";
+            // line 78
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "quantiteProduit", [], "any", false, false, false, 78), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 77
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "description", [], "any", false, false, false, 77), "html", null, true);
+            // line 79
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["g"], "description", [], "any", false, false, false, 79), "html", null, true);
             echo "</td>
                                     <td> <img style=\"width: 100px; height:100px\" src=\"";
-            // line 78
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("photo/" . twig_get_attribute($this->env, $this->source, $context["g"], "imageProduit", [], "any", false, false, false, 78))), "html", null, true);
-            echo "\"></td>
-
-                                    <td>  <a  href=\" ";
             // line 80
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("produitDelete", ["id" => twig_get_attribute($this->env, $this->source, $context["g"], "id", [], "any", false, false, false, 80)]), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("photo/" . twig_get_attribute($this->env, $this->source, $context["g"], "imageProduit", [], "any", false, false, false, 80))), "html", null, true);
+            echo "\"></td>
+                                    ";
+            // line 81
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["g"], "etat", [], "any", false, false, false, 81), 0))) {
+                // line 82
+                echo "                                        <td><label class=\"badge badge-warning\">En cours</label></td>
+                                    ";
+            } elseif ((0 === twig_compare(twig_get_attribute($this->env, $this->source,             // line 83
+$context["g"], "etat", [], "any", false, false, false, 83), 1))) {
+                // line 84
+                echo "                                        <td><label class=\"badge badge-success\">validé</label></td>
+                                    ";
+            } else {
+                // line 86
+                echo "                                        <td><label class=\"badge badge-danger\">Refusé</label></td>
+                                    ";
+            }
+            // line 88
+            echo "                                    <td><a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("produit_valide", ["id" => twig_get_attribute($this->env, $this->source, $context["g"], "id", [], "any", false, false, false, 88)]), "html", null, true);
+            echo "\"class=\"btn btn-outline-success\" > valide</a></td>
+                                    <td><a href=\"";
+            // line 89
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("produit_refuser", ["id" => twig_get_attribute($this->env, $this->source, $context["g"], "id", [], "any", false, false, false, 89)]), "html", null, true);
+            echo "\"class=\"btn btn-outline-danger\" > refuser</a></td>
+                                    <td>  <a  href=\" ";
+            // line 90
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("produitDelete", ["id" => twig_get_attribute($this->env, $this->source, $context["g"], "id", [], "any", false, false, false, 90)]), "html", null, true);
             echo " \" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer?')\" class=\"btn btn-outline-primary\" > delete</a>
                                     <td>  <a  href=\" ";
-            // line 81
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("updateproduits", ["id" => twig_get_attribute($this->env, $this->source, $context["g"], "id", [], "any", false, false, false, 81)]), "html", null, true);
+            // line 91
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("updateproduits", ["id" => twig_get_attribute($this->env, $this->source, $context["g"], "id", [], "any", false, false, false, 91)]), "html", null, true);
             echo " \" class=\"btn btn-outline-primary\"  > update</a>
 
                                     </td>
@@ -211,7 +236,7 @@ class __TwigTemplate_b8c6c9b03524aece5d5091dc2b3da1bb601530eb03d11680127aad59b18
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['g'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 85
+        // line 95
         echo ">
 
 
@@ -231,7 +256,7 @@ class __TwigTemplate_b8c6c9b03524aece5d5091dc2b3da1bb601530eb03d11680127aad59b18
         <!-- /.container-fluid -->
         <div class=\"input-group\">
             <a href=\"";
-        // line 103
+        // line 113
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("stats");
         echo "\"class=\"btn btn-outline-primary\">Statistique</a>
         </div>
@@ -260,7 +285,7 @@ class __TwigTemplate_b8c6c9b03524aece5d5091dc2b3da1bb601530eb03d11680127aad59b18
 
     public function getDebugInfo()
     {
-        return array (  235 => 103,  215 => 85,  204 => 81,  200 => 80,  195 => 78,  191 => 77,  187 => 76,  183 => 75,  179 => 74,  173 => 73,  148 => 50,  140 => 48,  136 => 46,  132 => 45,  122 => 38,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  260 => 113,  240 => 95,  229 => 91,  225 => 90,  221 => 89,  216 => 88,  212 => 86,  208 => 84,  206 => 83,  203 => 82,  201 => 81,  197 => 80,  193 => 79,  189 => 78,  185 => 77,  181 => 76,  175 => 75,  148 => 50,  140 => 48,  136 => 46,  132 => 45,  122 => 38,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -327,7 +352,9 @@ class __TwigTemplate_b8c6c9b03524aece5d5091dc2b3da1bb601530eb03d11680127aad59b18
                                     <th> quantiteProduit </th>
                                     <th> description </th>
                                     <th> imageProduit </th>
-
+                                    <th> etat </th>
+                                    <th> valider </th>
+                                    <th> refuser </th>
                                     <th>delete</th>
                                     <th>update</th>
 
@@ -343,7 +370,15 @@ class __TwigTemplate_b8c6c9b03524aece5d5091dc2b3da1bb601530eb03d11680127aad59b18
                                     <td> {{ g.quantiteProduit }}</td>
                                     <td>{{ g.description }}</td>
                                     <td> <img style=\"width: 100px; height:100px\" src=\"{{ asset('photo/' ~ g.imageProduit) }}\"></td>
-
+                                    {% if g.etat == 0 %}
+                                        <td><label class=\"badge badge-warning\">En cours</label></td>
+                                    {% elseif g.etat == 1 %}
+                                        <td><label class=\"badge badge-success\">validé</label></td>
+                                    {% else %}
+                                        <td><label class=\"badge badge-danger\">Refusé</label></td>
+                                    {% endif %}
+                                    <td><a href=\"{{ path('produit_valide', {\"id\": g.id}) }}\"class=\"btn btn-outline-success\" > valide</a></td>
+                                    <td><a href=\"{{ path('produit_refuser', {\"id\": g.id}) }}\"class=\"btn btn-outline-danger\" > refuser</a></td>
                                     <td>  <a  href=\" {{ path('produitDelete', {\"id\": g.id}) }} \" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer?')\" class=\"btn btn-outline-primary\" > delete</a>
                                     <td>  <a  href=\" {{ path('updateproduits', {\"id\": g.id}) }} \" class=\"btn btn-outline-primary\"  > update</a>
 

@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* cours/index.html.twig */
+/* cours/affichagefront.html.twig.twig */
 class __TwigTemplate_8ab59ef8db14a200f29c9f62528450b9379dc887be49edf7e3527ef0301fcf0e extends Template
 {
     private $source;
@@ -40,12 +40,12 @@ class __TwigTemplate_8ab59ef8db14a200f29c9f62528450b9379dc887be49edf7e3527ef0301
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "cours/index.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "cours/affichagefront.html.twig.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "cours/index.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "cours/affichagefront.html.twig.twig"));
 
-        $this->parent = $this->loadTemplate("base-back.html.twig", "cours/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base-back.html.twig", "cours/affichagefront.html.twig.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -212,7 +212,7 @@ class __TwigTemplate_8ab59ef8db14a200f29c9f62528450b9379dc887be49edf7e3527ef0301
 
     public function getTemplateName()
     {
-        return "cours/index.html.twig";
+        return "cours/affichagefront.html.twig.twig";
     }
 
     public function isTraitable()
@@ -319,6 +319,6 @@ class __TwigTemplate_8ab59ef8db14a200f29c9f62528450b9379dc887be49edf7e3527ef0301
         <!-- /.content -->
     </div>
 
-{% endblock %}", "cours/index.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\cours\\index.html.twig");
+{% endblock %}", "cours/affichagefront.html.twig.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\cours\\affichagefront.html.twig.twig");
     }
 }

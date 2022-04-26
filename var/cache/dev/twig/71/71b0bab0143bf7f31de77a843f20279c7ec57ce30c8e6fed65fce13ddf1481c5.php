@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* produit/index.html.twig */
+/* produit/affichagefront.html.twig.twig */
 class __TwigTemplate_427cf17756647f8075827029d9d0f37d22c8648a92821f778652f3d34e85745f extends Template
 {
     private $source;
@@ -40,12 +40,12 @@ class __TwigTemplate_427cf17756647f8075827029d9d0f37d22c8648a92821f778652f3d34e8
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "produit/index.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "produit/affichagefront.html.twig.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "produit/index.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "produit/affichagefront.html.twig.twig"));
 
-        $this->parent = $this->loadTemplate("base-back.html.twig", "produit/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base-back.html.twig", "produit/affichagefront.html.twig.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -232,7 +232,7 @@ class __TwigTemplate_427cf17756647f8075827029d9d0f37d22c8648a92821f778652f3d34e8
 
     public function getTemplateName()
     {
-        return "produit/index.html.twig";
+        return "produit/affichagefront.html.twig.twig";
     }
 
     public function isTraitable()
@@ -348,6 +348,6 @@ class __TwigTemplate_427cf17756647f8075827029d9d0f37d22c8648a92821f778652f3d34e8
 </div>
 
 {% endblock %}
-", "produit/index.html.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\produit\\index.html.twig");
+", "produit/affichagefront.html.twig.twig", "C:\\wamp64\\(2)\\www\\Fitness\\templates\\produit\\affichagefront.html.twig.twig");
     }
 }

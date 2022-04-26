@@ -260,7 +260,7 @@ class __TwigTemplate_8545a31b4c82874d0a6637a248c4f71f60ba1de6cc34e05e98cf7c23a9f
                         <a href=\"https://symfony.com/doc/";
             // line 83
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["collector"]) || array_key_exists("collector", $context) ? $context["collector"] : (function () { throw new RuntimeError('Variable "collector" does not exist.', 83, $this->source); })()), "symfonyversion", [], "any", false, false, false, 83), "html", null, true);
-            echo "/index.html\" rel=\"help\">
+            echo "/affichagefront.html.twig\" rel=\"help\">
                             Read Symfony ";
             // line 84
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["collector"]) || array_key_exists("collector", $context) ? $context["collector"] : (function () { throw new RuntimeError('Variable "collector" does not exist.', 84, $this->source); })()), "symfonyversion", [], "any", false, false, false, 84), "html", null, true);
@@ -659,7 +659,7 @@ class __TwigTemplate_8545a31b4c82874d0a6637a248c4f71f60ba1de6cc34e05e98cf7c23a9f
                 <div class=\"sf-toolbar-info-piece\">
                     <b>Resources</b>
                     <span>
-                        <a href=\"https://symfony.com/doc/{{ collector.symfonyversion }}/index.html\" rel=\"help\">
+                        <a href=\"https://symfony.com/doc/{{ collector.symfonyversion }}/affichagefront.html.twig\" rel=\"help\">
                             Read Symfony {{ collector.symfonyversion }} Docs
                         </a>
                     </span>

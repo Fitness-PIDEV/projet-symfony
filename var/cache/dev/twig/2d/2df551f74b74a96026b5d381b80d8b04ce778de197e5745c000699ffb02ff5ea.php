@@ -102,7 +102,7 @@ _________________________________________________________ -->
     <div class=\"container\">
         <div class=\"navbar-header\">
 
-            <a class=\"navbar-brand home\" href=\"index.html\" data-animate-hover=\"bounce\">
+            <a class=\"navbar-brand home\" href=\"affichagefront.html.twig\" data-animate-hover=\"bounce\">
                 <img src=\"";
         // line 64
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/img/logo.png"), "html", null, true);
@@ -131,7 +131,7 @@ _________________________________________________________ -->
         <div class=\"navbar-collapse collapse\" id=\"navigation\">
 
             <ul class=\"nav navbar-nav navbar-left\">
-                <li class=\"active\"><a href=\"index.html\">Home</a>
+                <li class=\"active\"><a href=\"affichagefront.html.twig\">Home</a>
                 </li>
                 <li class=\"dropdown yamm-fw\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\" data-delay=\"200\">SHOP <b class=\"caret\"></b></a>
@@ -295,7 +295,7 @@ _________________________________________________________ -->
                                     <div class=\"col-sm-3\">
                                         <h5>Shop</h5>
                                         <ul>
-                                            <li><a href=\"index.html\">Homepage</a>
+                                            <li><a href=\"affichagefront.html.twig\">Homepage</a>
                                             </li>
                                             <li><a href=\"category.html\">Category - sidebar left</a>
                                             </li>
@@ -493,7 +493,7 @@ _________________________________________________________ -->
     <div class=\"container\">
         <div class=\"navbar-header\">
 
-            <a class=\"navbar-brand home\" href=\"index.html\" data-animate-hover=\"bounce\">
+            <a class=\"navbar-brand home\" href=\"affichagefront.html.twig\" data-animate-hover=\"bounce\">
                 <img src=\"{{ asset(\"front-office/img/logo.png\")}}\" alt=\"Obaju logo\" class=\"hidden-xs\">
                 <img src=\"{{ asset(\"front-office/img/logo-small.png\")}}\" alt=\"Obaju logo\" class=\"visible-xs\"><span class=\"sr-only\">Obaju - go to homepage</span>
             </a>
@@ -516,7 +516,7 @@ _________________________________________________________ -->
         <div class=\"navbar-collapse collapse\" id=\"navigation\">
 
             <ul class=\"nav navbar-nav navbar-left\">
-                <li class=\"active\"><a href=\"index.html\">Home</a>
+                <li class=\"active\"><a href=\"affichagefront.html.twig\">Home</a>
                 </li>
                 <li class=\"dropdown yamm-fw\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\" data-delay=\"200\">SHOP <b class=\"caret\"></b></a>
@@ -680,7 +680,7 @@ _________________________________________________________ -->
                                     <div class=\"col-sm-3\">
                                         <h5>Shop</h5>
                                         <ul>
-                                            <li><a href=\"index.html\">Homepage</a>
+                                            <li><a href=\"affichagefront.html.twig\">Homepage</a>
                                             </li>
                                             <li><a href=\"category.html\">Category - sidebar left</a>
                                             </li>

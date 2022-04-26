@@ -126,7 +126,7 @@ class __TwigTemplate_e754e4972b7eafed1fdd0740ce18e8b5c70a048c5eca2b3d666e0697562
                             <div class=\"flipper\">
                                 <div class=\"front\">
                                     <a href=\"detail.html\">
-                                        <img src=\"";
+                                        <img style=\"width: 200px; height:200px\" src=\"";
             // line 42
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("photo/" . twig_get_attribute($this->env, $this->source, $context["g"], "imageProduit", [], "any", false, false, false, 42))), "html", null, true);
             echo "\" alt=\"\" class=\"img-responsive\">
@@ -134,7 +134,7 @@ class __TwigTemplate_e754e4972b7eafed1fdd0740ce18e8b5c70a048c5eca2b3d666e0697562
                                 </div>
                                 <div class=\"back\">
                                     <a href=\"detail.html\">
-                                        <img src=\"";
+                                        <img style=\"width: 200px; height:200px\" src=\"";
             // line 47
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("photo/" . twig_get_attribute($this->env, $this->source, $context["g"], "imageProduit", [], "any", false, false, false, 47))), "html", null, true);
             echo "\" alt=\"\" class=\"img-responsive\">
@@ -143,7 +143,7 @@ class __TwigTemplate_e754e4972b7eafed1fdd0740ce18e8b5c70a048c5eca2b3d666e0697562
                             </div>
                         </div>
                         <a href=\"detail.html\" class=\"invisible\">
-                            <img src=\"";
+                            <img style=\"width: 200px; height:200px\" src=\"";
             // line 53
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("photo/" . twig_get_attribute($this->env, $this->source, $context["g"], "imageProduit", [], "any", false, false, false, 53))), "html", null, true);
             echo "\" alt=\"\" class=\"img-responsive\">
@@ -223,16 +223,18 @@ _________________________________________________________ -->
 
                 </div>
             </div>
-            <div class=\"pagination\">
-                ";
-        // line 104
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["tabproduit"]) || array_key_exists("tabproduit", $context) ? $context["tabproduit"] : (function () { throw new RuntimeError('Variable "tabproduit" does not exist.', 104, $this->source); })()));
-        echo "
 
-            <!-- *** MENUS AND FILTERS END *** -->
-        </div>
 
     </div>
+        <div class=\"pagination\">
+            ";
+        // line 107
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["tabproduit"]) || array_key_exists("tabproduit", $context) ? $context["tabproduit"] : (function () { throw new RuntimeError('Variable "tabproduit" does not exist.', 107, $this->source); })()));
+        echo "
+
+
+
+        </div>
     <!-- /.container -->
     </div>
 
@@ -257,7 +259,7 @@ _________________________________________________________ -->
 
     public function getDebugInfo()
     {
-        return array (  229 => 104,  221 => 98,  210 => 93,  207 => 92,  203 => 91,  178 => 68,  163 => 59,  158 => 57,  154 => 56,  148 => 53,  139 => 47,  131 => 42,  123 => 36,  119 => 35,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  232 => 107,  221 => 98,  210 => 93,  207 => 92,  203 => 91,  178 => 68,  163 => 59,  158 => 57,  154 => 56,  148 => 53,  139 => 47,  131 => 42,  123 => 36,  119 => 35,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -303,18 +305,18 @@ _________________________________________________________ -->
                             <div class=\"flipper\">
                                 <div class=\"front\">
                                     <a href=\"detail.html\">
-                                        <img src=\"{{ asset('photo/' ~ g.imageProduit) }}\" alt=\"\" class=\"img-responsive\">
+                                        <img style=\"width: 200px; height:200px\" src=\"{{ asset('photo/' ~ g.imageProduit) }}\" alt=\"\" class=\"img-responsive\">
                                     </a>
                                 </div>
                                 <div class=\"back\">
                                     <a href=\"detail.html\">
-                                        <img src=\"{{ asset('photo/' ~ g.imageProduit) }}\" alt=\"\" class=\"img-responsive\">
+                                        <img style=\"width: 200px; height:200px\" src=\"{{ asset('photo/' ~ g.imageProduit) }}\" alt=\"\" class=\"img-responsive\">
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <a href=\"detail.html\" class=\"invisible\">
-                            <img src=\"{{ asset('photo/' ~ g.imageProduit) }}\" alt=\"\" class=\"img-responsive\">
+                            <img style=\"width: 200px; height:200px\" src=\"{{ asset('photo/' ~ g.imageProduit) }}\" alt=\"\" class=\"img-responsive\">
                         </a>
                         <div class=\"text\">
                             <h3><a href=\"detail.html\">{{ g.nomProduit}} </a></h3>
@@ -364,13 +366,15 @@ _________________________________________________________ -->
 
                 </div>
             </div>
-            <div class=\"pagination\">
-                {{ knp_pagination_render(tabproduit) }}
 
-            <!-- *** MENUS AND FILTERS END *** -->
-        </div>
 
     </div>
+        <div class=\"pagination\">
+            {{ knp_pagination_render(tabproduit) }}
+
+
+
+        </div>
     <!-- /.container -->
     </div>
 

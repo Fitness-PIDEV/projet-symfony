@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerMGGefeW/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/Container0mPOgaF/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -27,6 +27,7 @@ $classes[] = 'Twig\Extra\TwigExtraBundle\TwigExtraBundle';
 $classes[] = 'Symfony\Bundle\WebServerBundle\WebServerBundle';
 $classes[] = 'Knp\Bundle\PaginatorBundle\KnpPaginatorBundle';
 $classes[] = 'CMEN\GoogleChartsBundle\CMENGoogleChartsBundle';
+$classes[] = 'FOS\CKEditorBundle\FOSCKEditorBundle';
 $classes[] = 'Symfony\Component\HttpClient\TraceableHttpClient';
 $classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
 $classes[] = 'Symfony\Component\HttpClient\HttpClient';
@@ -37,6 +38,7 @@ $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'App\Controller\CategorieController';
 $classes[] = 'App\Controller\CoursController';
+$classes[] = 'App\Controller\HomeController';
 $classes[] = 'App\Controller\ProduitController';
 $classes[] = 'App\Form\CategorieType';
 $classes[] = 'App\Form\CoursType';
@@ -235,6 +237,10 @@ $classes[] = 'Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidato
 $classes[] = 'Symfony\Component\Form\Extension\Validator\Type\UploadValidatorExtension';
 $classes[] = 'Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser';
 $classes[] = 'Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser';
+$classes[] = 'FOS\CKEditorBundle\Command\CKEditorInstallerCommand';
+$classes[] = 'FOS\CKEditorBundle\Installer\CKEditorInstaller';
+$classes[] = 'FOS\CKEditorBundle\Form\Type\CKEditorType';
+$classes[] = 'FOS\CKEditorBundle\Config\CKEditorConfiguration';
 $classes[] = 'Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\EventListener\IsGrantedListener';
@@ -464,6 +470,9 @@ $classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput';
 $classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\DateOutput';
 $classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\DataOutput';
 $classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput';
+$classes[] = 'FOS\CKEditorBundle\Twig\CKEditorExtension';
+$classes[] = 'FOS\CKEditorBundle\Renderer\CKEditorRenderer';
+$classes[] = 'FOS\CKEditorBundle\Builder\JsonBuilder';
 $classes[] = 'Symfony\Bridge\Twig\AppVariable';
 $classes[] = 'Twig\RuntimeLoader\ContainerRuntimeLoader';
 $classes[] = 'Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor';

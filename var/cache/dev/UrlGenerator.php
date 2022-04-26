@@ -27,6 +27,7 @@ return [
     'coursDelete' => [['id'], ['_controller' => 'App\\Controller\\CoursController::deleteCours'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/deleteCours']], [], []],
     'updatecours' => [['id'], ['_controller' => 'App\\Controller\\CoursController::updateCours'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/updateCours']], [], []],
     'cours_detail' => [['id'], ['_controller' => 'App\\Controller\\CoursController::detailC'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/detailcours']], [], []],
+    'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/home']], [], []],
     'app_produit' => [[], ['_controller' => 'App\\Controller\\ProduitController::index'], [], [['text', '/produit']], [], []],
     'addproduits' => [[], ['_controller' => 'App\\Controller\\ProduitController::ajouter'], [], [['text', '/ajouterProduit']], [], []],
     'Produitslist' => [[], ['_controller' => 'App\\Controller\\ProduitController::listProduit'], [], [['text', '/listProduit']], [], []],
@@ -36,4 +37,6 @@ return [
     'recherche_prod' => [[], ['_controller' => 'App\\Controller\\ProduitController::Recherche'], [], [['text', '/recherche']], [], []],
     'stats' => [[], ['_controller' => 'App\\Controller\\ProduitController::stat'], [], [['text', '/stats']], [], []],
     'produit_detail' => [['id'], ['_controller' => 'App\\Controller\\ProduitController::detailP'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/detail']], [], []],
+    'produit_valide' => [['id'], ['_controller' => 'App\\Controller\\ProduitController::valide'], [], [['text', '/valide'], ['variable', '/', '[^/]++', 'id'], ['text', '/produit']], [], []],
+    'produit_refuser' => [['id'], ['_controller' => 'App\\Controller\\ProduitController::refuser'], [], [['text', '/refuser'], ['variable', '/', '[^/]++', 'id'], ['text', '/produit']], [], []],
 ];
