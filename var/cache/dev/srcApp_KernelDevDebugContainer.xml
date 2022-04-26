@@ -21,6 +21,8 @@
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
       <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
+      <parameter key="CMENGoogleChartsBundle">CMEN\GoogleChartsBundle\CMENGoogleChartsBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -71,11 +73,20 @@
         <parameter key="path">C:\wamp64\(2)\www\Fitness\vendor\symfony\web-server-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
       </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="path">C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
+      </parameter>
+      <parameter key="CMENGoogleChartsBundle" type="collection">
+        <parameter key="path">C:\wamp64\(2)\www\Fitness\vendor\cmen\google-charts-bundle</parameter>
+        <parameter key="namespace">CMEN\GoogleChartsBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
     <parameter key="container.dumper.inline_factories">true</parameter>
+    <parameter key="upload_directory">C:\wamp64\(2)\www\Fitness/public/photo</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -249,6 +260,13 @@
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
+    <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">2</parameter>
+    <parameter key="knp_paginator.page_limit">null</parameter>
+    <parameter key="cmen_google_charts.version">current</parameter>
+    <parameter key="cmen_google_charts.language"></parameter>
     <parameter key="maker.compatible_check.doctrine.supports_attributes">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
@@ -339,12 +357,47 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true">
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\CategorieController" class="App\Controller\CategorieController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CategorieController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CoursController" class="App\Controller\CoursController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CoursController"/>
+      </call>
+    </service>
     <service id="App\Controller\ProduitController" class="App\Controller\ProduitController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ProduitController"/>
       </call>
+    </service>
+    <service id="App\Form\CategorieType" class="App\Form\CategorieType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CoursType" class="App\Form\CoursType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CoursRepository" class="App\Repository\CoursRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id=".legacy_controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -764,9 +817,13 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CategorieType</argument>
+        <argument>App\Form\CoursType</argument>
+        <argument>App\Form\ProduitType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1100,7 +1157,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.SFX6J7Y"/>
+      <argument type="service" id=".service_locator.hw4CeyS"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1406,6 +1463,7 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ar.xliff</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
@@ -1421,6 +1479,7 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.bg.xliff</argument>
           </argument>
           <argument key="bs" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.bs.xlf</argument>
@@ -1436,6 +1495,7 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.cs.xliff</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
@@ -1444,11 +1504,13 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.da.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.da.xliff</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.de.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.de.xliff</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
@@ -1459,11 +1521,13 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.en.xliff</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.es.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.es.xliff</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
@@ -1474,21 +1538,25 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.eu.xliff</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fa.xliff</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.fi.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.fi.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fi.xliff</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fr.xliff</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
@@ -1504,11 +1572,13 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.hr.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hr.xliff</argument>
           </argument>
           <argument key="hu" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hu.xliff</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
@@ -1519,16 +1589,19 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.id.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.id.xliff</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.it.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.it.xliff</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.ja.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ja.xliff</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
@@ -1539,6 +1612,7 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.lt.xliff</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
@@ -1564,6 +1638,7 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.nl.xliff</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
@@ -1574,11 +1649,13 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.no.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.no.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.no.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.no.xliff</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pl.xliff</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
@@ -1589,16 +1666,19 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pt_BR.xliff</argument>
           </argument>
           <argument key="ro" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ro.xliff</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ru.xliff</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
@@ -1629,6 +1709,7 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sv.xliff</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
@@ -1644,11 +1725,13 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.tr.xliff</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.uk.xliff</argument>
           </argument>
           <argument key="uz" type="collection">
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations\validators.uz.xlf</argument>
@@ -1670,11 +1753,18 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations\validators.zh_TW.xlf</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations\security.zh_TW.xlf</argument>
           </argument>
+          <argument key="ky" type="collection">
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ky.xliff</argument>
+          </argument>
+          <argument key="sw" type="collection">
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sw.xliff</argument>
+          </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
           <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations</argument>
+          <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\framework-bundle/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness\src/Resources/FrameworkBundle/translations</argument>
@@ -1700,6 +1790,9 @@
           <argument>C:\wamp64\(2)\www\Fitness\src/Resources/TwigExtraBundle/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\web-server-bundle/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness\src/Resources/WebServerBundle/translations</argument>
+          <argument>C:\wamp64\(2)\www\Fitness\src/Resources/KnpPaginatorBundle/translations</argument>
+          <argument>C:\wamp64\(2)\www\Fitness\vendor\cmen\google-charts-bundle/translations</argument>
+          <argument>C:\wamp64\(2)\www\Fitness\src/Resources/CMENGoogleChartsBundle/translations</argument>
           <argument>C:\wamp64\(2)\www\Fitness\src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -1707,6 +1800,7 @@
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\validator/Resources/translations</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\form/Resources/translations</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-core/Resources/translations</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/translations</argument>
             <argument>translations</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\framework-bundle/translations</argument>
             <argument>C:\wamp64\(2)\www\Fitness\src/Resources/FrameworkBundle/translations</argument>
@@ -1732,6 +1826,9 @@
             <argument>C:\wamp64\(2)\www\Fitness\src/Resources/TwigExtraBundle/translations</argument>
             <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\web-server-bundle/translations</argument>
             <argument>C:\wamp64\(2)\www\Fitness\src/Resources/WebServerBundle/translations</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\src/Resources/KnpPaginatorBundle/translations</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\vendor\cmen\google-charts-bundle/translations</argument>
+            <argument>C:\wamp64\(2)\www\Fitness\src/Resources/CMENGoogleChartsBundle/translations</argument>
             <argument>C:\wamp64\(2)\www\Fitness\src/Resources/translations</argument>
           </argument>
         </argument>
@@ -2174,6 +2271,14 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
           <argument type="service_closure" id="response_listener"/>
@@ -2588,6 +2693,46 @@
           <argument>onKernelFinishRequest</argument>
         </argument>
         <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
+          <argument>before</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sortable"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.filtration"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>1</argument>
       </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver" public="false">
@@ -3106,6 +3251,12 @@
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3221,6 +3372,14 @@
       <call method="addPath">
         <argument>C:\wamp64\(2)\www\Fitness\vendor\symfony\security-bundle/Resources/views</argument>
         <argument>!Security</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp64\(2)\www\Fitness\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>!KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp64\(2)\www\Fitness/templates</argument>
@@ -3917,7 +4076,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.I3K77mT"/>
+      <argument type="service" id=".service_locator..EYI2Im"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4897,9 +5056,92 @@
         <argument>server:status</argument>
       </call>
     </service>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
+      <tag name="proxy" interface="Knp\Component\Pager\PaginatorInterface"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="request_stack"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+          <argument key="pageOutOfRange">ignore</argument>
+          <argument key="defaultLimit">10</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="container.hot_path"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">2</argument>
+        <argument key="defaultPageLimit">null</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput" public="false"/>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput" public="false">
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput" public="false">
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput" public="false"/>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput" public="false">
+      <argument>current</argument>
+      <argument></argument>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" class="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput"/>
+    </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CoursController" class="App\Controller\CoursController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CoursController" class="App\Controller\CoursController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CoursController" class="App\Controller\CoursController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProduitController" class="App\Controller\ProduitController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProduitController" class="App\Controller\ProduitController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProduitController" class="App\Controller\ProduitController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CategorieType" class="App\Form\CategorieType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CategorieType" class="App\Form\CategorieType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CoursType" class="App\Form\CoursType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CoursType" class="App\Form\CoursType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CoursRepository" class="App\Repository\CoursRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CoursRepository" class="App\Repository\CoursRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5181,9 +5423,70 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.I3K77mT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.hqNb5OX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="categorieRepository" type="service_closure" id="App\Repository\CategorieRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.O0iTA_h" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="CoursRepository" type="service_closure" id="App\Repository\CoursRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.2u6gwTs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+        <argument key="repository" type="service_closure" id="App\Repository\CoursRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.HXVUpv5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Cours" type="service_closure" id=".errored..service_locator.HXVUpv5.App\Entity\Cours"/>
+      </argument>
+    </service>
+    <service id=".service_locator.D_VxfLH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="produitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.cgXEpia" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+        <argument key="repository" type="service_closure" id="App\Repository\ProduitRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.J966qaa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="produit" type="service_closure" id=".errored..service_locator.J966qaa.App\Entity\Produit"/>
+      </argument>
+    </service>
+    <service id=".service_locator.cOvF6GX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\CategorieController::ajoutercategorie" type="service_closure" id=".service_locator.hqNb5OX"/>
+        <argument key="App\Controller\CoursController::ajouterCours" type="service_closure" id=".service_locator.O0iTA_h"/>
+        <argument key="App\Controller\CoursController::detailC" type="service_closure" id=".service_locator.HXVUpv5"/>
+        <argument key="App\Controller\CoursController::listcoursfront" type="service_closure" id=".service_locator.2u6gwTs"/>
+        <argument key="App\Controller\ProduitController::Recherche" type="service_closure" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\ProduitController::ajouter" type="service_closure" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\ProduitController::detailP" type="service_closure" id=".service_locator.J966qaa"/>
+        <argument key="App\Controller\ProduitController::listProduitfront" type="service_closure" id=".service_locator.cgXEpia"/>
+        <argument key="App\Controller\CategorieController:ajoutercategorie" type="service_closure" id=".service_locator.hqNb5OX"/>
+        <argument key="App\Controller\CoursController:ajouterCours" type="service_closure" id=".service_locator.O0iTA_h"/>
+        <argument key="App\Controller\CoursController:detailC" type="service_closure" id=".service_locator.HXVUpv5"/>
+        <argument key="App\Controller\CoursController:listcoursfront" type="service_closure" id=".service_locator.2u6gwTs"/>
+        <argument key="App\Controller\ProduitController:Recherche" type="service_closure" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\ProduitController:ajouter" type="service_closure" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\ProduitController:detailP" type="service_closure" id=".service_locator.J966qaa"/>
+        <argument key="App\Controller\ProduitController:listProduitfront" type="service_closure" id=".service_locator.cgXEpia"/>
+      </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -5244,9 +5547,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.SFX6J7Y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.hw4CeyS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CategorieType" type="service_closure" id="App\Form\CategorieType"/>
+        <argument key="App\Form\CoursType" type="service_closure" id="App\Form\CoursType"/>
+        <argument key="App\Form\ProduitType" type="service_closure" id="App\Form\ProduitType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -5413,6 +5719,14 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
+    <service id=".service_locator..EYI2Im" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Repository\CategorieRepository" type="service_closure" id="App\Repository\CategorieRepository"/>
+        <argument key="App\Repository\CoursRepository" type="service_closure" id="App\Repository\CoursRepository"/>
+        <argument key="App\Repository\ProduitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
+      </argument>
+    </service>
     <service id="doctrine.dbal.logging_middleware.default" class="Doctrine\DBAL\Logging\Middleware">
       <argument type="service" id="monolog.logger.doctrine"/>
     </service>
@@ -5463,6 +5777,18 @@
         <argument key="session" type="service_closure" id="session" on-invalid="ignore"/>
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\CategorieController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CategorieController"/>
+      <argument>App\Controller\CategorieController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\CoursController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CoursController"/>
+      <argument>App\Controller\CoursController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
     <service id=".service_locator.vdmMuyE.App\Controller\ProduitController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ProduitController"/>
@@ -5616,12 +5942,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.I3K77mT"/>
+      <argument type="service" id=".service_locator.cOvF6GX"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.I3K77mT"/>
+      <argument type="service" id=".service_locator.cOvF6GX"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5631,6 +5957,8 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
+    <service id=".errored..service_locator.HXVUpv5.App\Entity\Cours" class="App\Entity\Cours"/>
+    <service id=".errored..service_locator.J966qaa.App\Entity\Produit" class="App\Entity\Produit"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.TfYcj5y"/>
       <argument type="collection">
@@ -6019,9 +6347,10 @@
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
+    <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.I3K77mT"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.cOvF6GX"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

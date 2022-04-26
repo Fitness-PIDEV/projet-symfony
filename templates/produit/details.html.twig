@@ -8,34 +8,34 @@
 
             <div class="col-md-3">
                 <!-- *** MENUS AND FILTERS ***
-_________________________________________________________ -->
+    _________________________________________________________ -->
                 <div class="panel panel-default sidebar-menu">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Categories</h3>
                     </div>
 
-                   {# <div class="panel-body">
+                    <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked category-menu">
                             {% for c in tabcategorie %}
-                            <li>
-                                <a href="category.html"> {{ c.nomCategorie }}</a>
-
-                            </li>
-
+                                <li>
+                                    <a href="category.html"> {{ c.nomCategorie }}</a>
+                                </li>
                             {% endfor %}
+
                         </ul>
 
-                      </div> #}
+                    </div>
                 </div>
-
             </div>
             <!-- *** MENUS AND FILTERS END *** -->
             <div class="col-md-9">
+                <center>
                 <div id="mainImage">
 
                     <img  style="width: 300px; height:300px"src="{{ asset('photo/' ~ produit.imageProduit) }}">
                 </div>
+                </center>
                 <div class="box" id="details">
                     <p>
                     <h4>Nom du Produit</h4>

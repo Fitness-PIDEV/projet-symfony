@@ -1,50 +1,57 @@
 {% extends 'base-front.html.twig' %}
 {% block body %}
 
-<div id="all">
-
     <div id="content">
+        <div class="container">
 
-
-        <!-- *** ADVANTAGES HOMEPAGE ***
-_________________________________________________________ -->
-        <div id="advantages">
-            <div class="box info-bar">
-                <div class="row">
-
-
-                    <div class="col-sm-12 col-md-8  products-number-sort">
-                        <div class="row">
-                            <h3>DECOUVREZ NOS COURS !</h3>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a>
+                    </li>
+                    <li>COURS</li>
+                </ul>
             </div>
-            <div class="container">
-                {% for g in tabcours %}
-                <div class="same-height-row">
-                    <div class="col-sm-4">
-                        <div class="box same-height clickable">
-                            <div class="icon"><i class="fa fa-heart"></i>
+
+            <div class="col-md-9" style="margin-left: 100px;">
+
+
+                <div class="row products" >
+
+                    {% for g in tabcours %}
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="product"  style="border-radius: 20px;">
+                                <div class="text">
+                                    <h2 style="margin-left: 30px;"><a href="detail.html">{{ g.nomCours}} </a></h2>
+                                    <p class="price">{{ g.dureeCours}}</p>
+                                    <p class="price">{{ g.nomCoach}}</p>
+                                    <p class="price">{{ g.salle}}</p>
+                                    <p class="buttons">
+                                        <a  href="" class="btn btn-primary" style="border-radius: 8px;">Reserver</a>
+
+                                    </p>
+                                </div>
+                                <!-- /.text -->
                             </div>
-
-                            <h3><a href="{{ path('cours_detail', {"id": g.getId()}) }}">{{ g.nomCours}}</a></h3>
-                            <p> <br> </p>
+                            <!-- /.product -->
                         </div>
-                    </div>
 
+                    {% endfor %}
+
+                    <!-- /.col-md-4 -->
                 </div>
-                <!-- /.row -->
-                {% endfor %}
+
+                <!-- /.products -->
             </div>
+</center>
+            <!-- /.col-md-9 -->
             <!-- /.container -->
-
         </div>
-        <!-- /#advantages -->
+        <center>
+            <div class="pagination">
+                {{ knp_pagination_render(tabcours) }}
 
-
+            </div>
+        </center>
     </div>
-    <!-- /#content -->
-</div>
-
 {% endblock %}

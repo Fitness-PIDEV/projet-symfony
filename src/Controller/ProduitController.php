@@ -6,6 +6,7 @@ use App\Entity\Categorie;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,7 @@ class ProduitController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('produit/index.html.twig', [
+        return $this->render('produit/affichagefront.html.twig.twig', [
             'controller_name' => 'ProduitController',
         ]);
     }
@@ -43,7 +44,7 @@ class ProduitController extends AbstractController
             $file->move($this->getParameter('upload_directory'),$fileName);
             $produit->setImageProduit($fileName);
             $produit->setIdCategorie(1);
-            $produit->setEtat(1);
+            $produit->setEtat(0);
         $em =$this->getDoctrine()->getManager();
 
         $em->persist($produit);
@@ -70,10 +71,10 @@ class ProduitController extends AbstractController
      */
     public function listProduitfront(ProduitRepository $repository,\Symfony\Component\HttpFoundation\Request $request, PaginatorInterface $paginator)
     {
-        $produit=$this->getDoctrine()->getRepository(Produit::class)->findAll();
+        $produit=$this->getDoctrine()->getRepository(Produit::class)->findBy(["etat"=>1]);
         $category=$this->getDoctrine()->getRepository(Categorie::class)->findAll();
         $produit = $paginator->paginate(
-            $produit = $repository->findAll(),
+            $produit = $repository->findBy(["etat"=>1]),
             $request->query->getInt('page', 1),
             3
         );
@@ -123,7 +124,7 @@ class ProduitController extends AbstractController
                 array_push($chosen,$p);
             }
         }
-        return $this->render('produit/index.html.twig',
+        return $this->render('produit/affichagefront.html.twig.twig',
             ['tabproduit' => $chosen]);
     }
 
@@ -189,10 +190,40 @@ class ProduitController extends AbstractController
      */
     public function detailP(Produit $produit): Response
     {
+       $produit->setNbrvue(($produit->getNbrvue())+1);
+        $category=$this->getDoctrine()->getRepository(Categorie::class)->findAll();
+        $em =$this->getDoctrine()->getManager();
+        $em->persist($produit);
 
+        $em->flush();
         return $this->render('produit/details.html.twig', [
-            'produit' => $produit,
+            'produit' => $produit, 'tabcategorie'=>$category
         ]);
+    }
+
+    /**
+     * @Route("produit/{id}/valide", name="produit_valide")
+     * @param Produit $produit
+     * @return RedirectResponse
+     */
+    public function valide (Produit $produit): RedirectResponse
+    {
+        $produit->setEtat(1);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        return $this->redirectToRoute("Produitslist");
+    }
+    /**
+     * @Route("produit/{id}/refuser", name="produit_refuser")
+     * @param Produit $produit
+     * @return RedirectResponse
+     */
+    public function refuser (Produit $produit): RedirectResponse
+    {
+        $produit->setEtat(2);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        return $this->redirectToRoute("Produitslist");
     }
 
 

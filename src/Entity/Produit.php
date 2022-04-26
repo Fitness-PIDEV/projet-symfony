@@ -87,6 +87,11 @@ class Produit
     private $categories;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbrvue;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -228,6 +233,18 @@ class Produit
 public function __toString()
 {
     return $this->getDescription();
+}
+
+public function getNbrvue(): ?int
+{
+    return $this->nbrvue;
+}
+
+public function setNbrvue(?int $nbrvue): self
+{
+    $this->nbrvue = $nbrvue;
+
+    return $this;
 }
 
 }

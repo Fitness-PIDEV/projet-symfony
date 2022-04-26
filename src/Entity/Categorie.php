@@ -41,7 +41,7 @@ class Categorie
     private $etat;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categories")
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categories" ,cascade={"persist", "remove"},orphanRemoval=true)
      */
     private $produits;
 

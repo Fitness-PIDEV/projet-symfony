@@ -22,7 +22,7 @@ class CoursController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('cours/index.html.twig', [
+        return $this->render('cours/affichagefront.html.twig.twig', [
             'controller_name' => 'CoursController',
         ]);
     }
@@ -46,6 +46,8 @@ class CoursController extends AbstractController
 
             $em->persist($cours);
             $em->flush();
+            $this->addFlash('success','Cours ADED successfully');
+            return $this->redirectToRoute('Courslist');
         }
 
         return $this->render('cours/ajouterCours.html.twig', ["form"=>$form->createView()]);
@@ -83,6 +85,7 @@ class CoursController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($cours);
         $em->flush();
+        $this->addFlash('success','Cours Deleted successfully');
         return $this->redirectToRoute("Courslist");
     }
     /**
@@ -98,7 +101,9 @@ class CoursController extends AbstractController
             $em=$this->getDoctrine()->getManager();
 
             $em->flush();
+            $this->addFlash('success','Cours Updated successfully');
             return $this->redirectToRoute("Courslist");
+
         }
         return $this->render("cours/updateCours.html.twig",array("form"=>$form->createView()));
     }

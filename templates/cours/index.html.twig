@@ -15,6 +15,11 @@
 
                 </div>
             </div><!-- /.container-fluid -->
+            {% for message in app.flashes('success')%}
+            <div class="alert alert-success">
+
+                {{ message }}
+                {% endfor %}
         </section>
 
         <!-- Main content -->
@@ -83,13 +88,15 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
+
             <div class="input-group">
                 <a href="{{ path('addCours') }}"class="btn btn-outline-primary">Ajouter cours</a>
             </div>
+
         </section>
+
         <!-- /.content -->
     </div>
 

@@ -126,6 +126,15 @@ class ComposerStaticInitf40bbf82bd09ab6e5463fb41cba2e8e7
         array (
             'Laminas\\Code\\' => 13,
         ),
+        'K' => 
+        array (
+            'Knp\\Component\\' => 14,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
+        ),
+        'F' => 
+        array (
+            'FOS\\CKEditorBundle\\' => 19,
+        ),
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -148,6 +157,10 @@ class ComposerStaticInitf40bbf82bd09ab6e5463fb41cba2e8e7
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
+        ),
+        'C' => 
+        array (
+            'CMEN\\GoogleChartsBundle\\' => 24,
         ),
         'A' => 
         array (
@@ -483,6 +496,18 @@ class ComposerStaticInitf40bbf82bd09ab6e5463fb41cba2e8e7
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
         ),
+        'Knp\\Component\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component',
+        ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src',
+        ),
+        'FOS\\CKEditorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/ckeditor-bundle/src',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
@@ -552,6 +577,10 @@ class ComposerStaticInitf40bbf82bd09ab6e5463fb41cba2e8e7
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'CMEN\\GoogleChartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cmen/google-charts-bundle',
         ),
         'App\\Tests\\' => 
         array (

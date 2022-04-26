@@ -18,7 +18,7 @@ class CategorieController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('categorie/index.html.twig', [
+        return $this->render('categorie/affichagefront.html.twig.twig', [
             'controller_name' => 'CategorieController',
         ]);
     }
@@ -40,6 +40,8 @@ class CategorieController extends AbstractController
             $em =$this->getDoctrine()->getManager();
                $em->persist($categorie);
             $em->flush();
+            $this->addFlash('success','Categorie ADED successfully');
+            return $this->redirectToRoute('Categorielist');
         }
 
         return $this->render('categorie/ajouterCategorie.html.twig', ["form"=>$form->createView()]);
@@ -63,6 +65,7 @@ class CategorieController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($categorie);
         $em->flush();
+        $this->addFlash('success','Categorie Deleted successfully');
         return $this->redirectToRoute("Categorielist");
     }
     /**
@@ -78,6 +81,7 @@ class CategorieController extends AbstractController
             $em=$this->getDoctrine()->getManager();
 
             $em->flush();
+            $this->addFlash('success','Categorie Updated successfully');
             return $this->redirectToRoute("Categorielist");
         }
         return $this->render("categorie/updateCategorie.html.twig",array("form"=>$form->createView()));

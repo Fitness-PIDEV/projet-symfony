@@ -41,7 +41,7 @@ class __TwigTemplate_0e0ac9d8dbc441f9f76ca64c7052f0deb17614e1c6abbc731ccc0e42806
 
         // line 1
         echo "<footer class=\"main-footer\">
-    <strong>Copyright &copy; 2014-2020 <a href=\"https://adminlte.io\">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2022-2023 <a href=\"https://adminlte.io\">AdminFitness</a>.</strong>
     All rights reserved.
     <div class=\"float-right d-none d-sm-inline-block\">
         <b>Version</b> 3.1.0-pre
@@ -75,7 +75,7 @@ class __TwigTemplate_0e0ac9d8dbc441f9f76ca64c7052f0deb17614e1c6abbc731ccc0e42806
     public function getSourceContext()
     {
         return new Source("<footer class=\"main-footer\">
-    <strong>Copyright &copy; 2014-2020 <a href=\"https://adminlte.io\">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2022-2023 <a href=\"https://adminlte.io\">AdminFitness</a>.</strong>
     All rights reserved.
     <div class=\"float-right d-none d-sm-inline-block\">
         <b>Version</b> 3.1.0-pre

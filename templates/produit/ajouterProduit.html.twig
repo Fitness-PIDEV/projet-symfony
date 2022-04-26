@@ -40,50 +40,49 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
                                 <div class="card-body">
 
-                                    <div class="col-md-6">
+
                                     <div> <p>Nom_Produit</p></div>
 
                                     {{ form_widget (form.nomProduit) }}
                                     {{ form_errors(form.nomProduit) }}
-                                    </div>
-                                    <div class="col-12 col-sm-6">
+
                                     <div> <p>Prix</p></div>
                                     {{ form_widget (form.prixProduit) }}
                                     {{ form_errors(form.prixProduit) }}
-                                    </div>
-                                    <div class="col-12 col-sm-6">
+
+
                                      <div> <p>Categorie</p></div>
                                      {{ form_widget (form.categories) }}
                                     {{ form_errors(form.categories) }}
-                                    </div>
-                                    <div class="col-12 col-sm-6">
+
+
                                     <div> <p>Image</p></div>
                                     {{ form_widget (form.imageProduit) }}
-                                    </div>
-                                    <div class="col-12 col-sm-6">
+
+
                                     <div> <p>Description</p></div>
                                     {{ form_widget (form.description) }}
                                     {{ form_errors(form.description) }}
-                                    </div>
+
                                     {#  <div class="col-12 col-sm-6">
                                     <div> <p>Etat</p></div>
                                     {{ form_widget (form.etat) }}
                                     {{ form_errors(form.etat) }}
                                     </div>#}
                                     <div> <p>Quantite</p></div>
-                                    <div class="col-12 col-sm-6">
+
                                     {{ form_widget (form.quantiteProduit) }}
                                     {{ form_errors(form.quantiteProduit) }}
-                                    </div>
+
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" value="ajouter" class="btn btn-info">Ajouter</button>
-                                    <button type="submit" class="btn btn-default float-right">Cancel</button>
+                                    <button type="submit" value="ajouter" class="btn btn-info float-right" >Ajouter</button>
+
                                 </div>
                                 <!-- /.card-footer -->
                                 {{ form_rest(form) }}
