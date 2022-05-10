@@ -1,0 +1,134 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}ACCUEIL- Fitness{% endblock %}
+
+{% block body %}
+
+<div id="all">
+
+    <div id="content">
+
+        <div class="container">
+            <div class="col-md-12">
+                <div id="main-slider">
+                    <div class="item">
+                        <img style="width: 1120px; height:500px" src="{{ asset("front-office/img/1.jpg")}}" alt="" class="img-responsive">
+                    </div>
+                    <div class="item">
+                        <img style="width: 1120px; height:500px" class="img-responsive" src="{{ asset("front-office/img/2.jpg")}}" alt="">
+                    </div>
+                    <div class="item">
+                        <img style="width: 1120px; height:500px" class="img-responsive" src="{{ asset("front-office/img/3.jpg")}}"alt="">
+                    </div>
+                    <div class="item">
+                        <img style="width: 1120px; height:500px" class="img-responsive" src="{{ asset("front-office/img/4.jpg")}}" alt="">
+                    </div>
+                </div>
+                <!-- /#main-slider -->
+            </div>
+        </div>
+
+        <!-- *** ADVANTAGES HOMEPAGE ***
+_________________________________________________________ -->
+        <div id="advantages">
+
+            <div class="container">
+                <div class="same-height-row">
+                    <div class="col-sm-4">
+                        <div class="box same-height clickable">
+                            <div class="icon"><i class="fa fa-heart"></i>
+                            </div>
+
+                            <h3><a href="#">Plus de 500 clients fidéles</a></h3>
+                            <p> <br> </p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="box same-height clickable">
+                            <div class="icon"><i class="fa fa-tags"></i>
+                            </div>
+                            <h3><a href="#">meilleurs prix </a></h3>
+                            <p> <br> </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="box same-height clickable">
+                            <div class="icon"><i class="fa fa-thumbs-up"></i>
+                            </div>
+                            <h3><a href="#">100% garantie de service</a></h3>
+                            <p> <br> </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#advantages -->
+        <!-- *** ADVANTAGES END *** -->
+        <!-- *** HOT PRODUCT SLIDESHOW ***
+_________________________________________________________ -->
+
+        <div id="hot">
+            <div class="box">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2>Best Products</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="margin-left: 250px">
+                <div class="product-slider">
+                    {% for g in tabproduit %}
+
+                    <div class="item" >
+                        <div class="product" style="border-radius: 20px;">
+                            <div class="flip-container" style="margin-left: 15px; margin-top: 15px">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a href="detail.html">
+                                            <img style="width: 150px; height:150px" src="{{ asset('photo/' ~ g.imageProduit) }}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="back">
+                                        <a href="detail.html">
+                                            <img style="width: 150px; height:150px" src="{{ asset('photo/' ~ g.imageProduit) }}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="detail.html" class="invisible">
+                                <img style="width: 150px; height:150px" src="{{ asset('photo/' ~ g.imageProduit) }}" alt="" class="img-responsive">
+                            </a>
+                            <div class="text">
+                                <h3><a href="detail.html">{{ g.nomProduit}} </a></h3>
+                                <p class="price">{{ g.prixProduit}} DT</p>
+                                <p class="buttons">
+                                    <a  href="{{ path('produit_detail', {"id": g.getId()}) }}" class="btn btn-default" style="border-radius: 8px;">View detail</a>
+                                </p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+
+                        <!-- /.product -->
+                    </div>
+
+                    <!-- /.col-md-4 -->
+                    {% endfor %}
+                </div>
+
+                <!-- /.product-slider -->
+            </div>
+
+            <!-- /.container -->
+        </div>
+        <!-- /#hot -->
+        <!-- *** HOT END *** -->
+    </div>
+    <!-- /#content -->
+
+
+
+{% endblock %}

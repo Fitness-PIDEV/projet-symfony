@@ -1,0 +1,60 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+
+<div id="all">
+
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-3">
+                <!-- *** MENUS AND FILTERS ***
+    _________________________________________________________ -->
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Categories</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked category-menu">
+                            {% for c in tabcategorie %}
+                                <li>
+                                    <a href="category.html"> {{ c.nomCategorie }}</a>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <!-- *** MENUS AND FILTERS END *** -->
+            <div class="col-md-9">
+                <center>
+                <div id="mainImage">
+
+                    <img  style="width: 300px; height:300px"src="{{ asset('photo/' ~ produit.imageProduit) }}">
+                </div>
+                </center>
+                <div class="box" id="details">
+                    <p>
+                    <h4>Nom du Produit</h4>
+                    <p>{{ produit.nomProduit }}</p>
+                    <h4>Prix</h4>
+                    <p class="single-product-pricing"> {{ produit.prixProduit }} DT</p>
+
+                    <h4>Description</h4>
+                    <p>{{ produit.description |raw}}</p>
+                    <h4>quantite</h4>
+                    <p> Il reste que {{ produit.quantiteProduit}} de ce produit</p>
+
+                    <hr>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

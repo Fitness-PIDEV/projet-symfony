@@ -1,0 +1,36 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+{% block title %}Workout{% endblock %}
+
+{% block body %}
+   <center> <h1>Workout</h1> </center>
+
+   <center><table class="table">
+        <tbody>
+            <tr>
+                <th>NomMuscle</th>
+                <td>{{ workout.nomMuscle }}</td>
+            </tr>
+            <tr>
+                <th>NomExercice</th>
+                <td>{{ workout.nomExercice }}</td>
+            </tr>
+            <tr>
+                <th>ImageExercice</th>
+                <td> <img style="width: 100px; height:100px" src="{{asset('uploads/images/') ~ workout.imageExercice }}" class="img-responsive" alt="Image"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ workout.description }}</td>
+            </tr>
+            <tr>
+                <th>DureeExercice</th>
+                <td>{{ workout.dureeExercice }}</td>
+            </tr>
+
+        </tbody>
+    </table></center>
+
+
+{% endblock %}
+{% endblock %}

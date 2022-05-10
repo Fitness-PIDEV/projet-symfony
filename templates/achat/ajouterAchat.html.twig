@@ -1,0 +1,52 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Hello AchatController!{% endblock %}
+
+{% block body %}
+    <div id="all">
+
+    <div id="content" style="margin-left: 20%">
+    <div class="container">
+
+    <div class="col-md-8">
+    <div class="box">
+
+    {#  <div class="col-md-6"style="margin-left: 25%">
+        <div class="box">#}
+            <h1>Panier</h1>
+
+
+            <hr>
+
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+            <div class="form-group">
+                <div> <p>Produit</p></div>
+                {{ form_widget (form.refProduit, { 'attr': {'value':  produit.nomProduit } }) }}
+                {{ form_errors(form.refProduit) }}
+            </div>
+            <div class="form-group">
+                <div> <p>prix</p></div>
+                {{ form_widget (form.prix, { 'attr': {'value':  produit.prixProduit } }) }}
+                {{ form_errors(form.prix) }}
+            </div>
+
+
+            <div class="text-center">
+                <button type="submit" value="ajouter" class="btn btn-primary">Ajouter</button>
+            </div>
+            <a href="{{ path('addlivraison', {"id": produit.id}) }}" >livraison</a>
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

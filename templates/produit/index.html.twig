@@ -4,6 +4,114 @@
 
 {% block body %}
 
+<div class="content-wrapper" style="min-height: 1335.69px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Gestion Produit</h1>
+                </div>
 
-<div> test</div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- /.row -->
+
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+
+                        <div class="card-header">
+                            <h3 class="card-title">Liste des Produits    </h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+
+                                        <div class="input-group">
+                                          <a href="{{ path('addproduits') }}"class="btn btn-outline-primary">Ajouter Produit</a>
+                                        </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        {% for message in app.flashes('success')%}
+                        <div class="alert alert-success">
+
+                            {{ message }}
+                            {% endfor %}
+                        </div>
+                        <!-- /.card-header -->
+
+                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                            <table class="table table-striped">
+
+                                <thead>
+                                <tr>
+                                    <th> nomProduit </th>
+                                    <th> prixProduit </th>
+                                    <th> quantiteProduit </th>
+                                    <th> description </th>
+                                    <th> imageProduit </th>
+                                    <th> etat </th>
+                                    <th> valider </th>
+                                    <th> refuser </th>
+                                    <th>delete</th>
+                                    <th>update</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr {% for g in tabproduit %}>
+                                    <td> {{ g.nomProduit }}</td>
+                                    <td> {{ g.prixProduit }}</td>
+                                    <td> {{ g.quantiteProduit }}</td>
+                                    <td>{{ g.description |raw }} </td>
+                                    <td> <img style="width: 100px; height:100px" src="{{ asset('photo/' ~ g.imageProduit) }}"></td>
+                                    {% if g.etat == 0 %}
+                                        <td><label class="badge badge-warning">En cours</label></td>
+                                    {% elseif g.etat == 1 %}
+                                        <td><label class="badge badge-success">validé</label></td>
+                                    {% else %}
+                                        <td><label class="badge badge-danger">Refusé</label></td>
+                                    {% endif %}
+                                    <td><a href="{{ path('produit_valide', {"id": g.id}) }}"class="btn btn-outline-success" > valide</a></td>
+                                    <td><a href="{{ path('produit_refuser', {"id": g.id}) }}"class="btn btn-outline-danger" > refuser</a></td>
+                                    <td>  <a  href=" {{ path('produitDelete', {"id": g.id}) }} " onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')" class="btn btn-outline-primary" > delete</a>
+                                    <td>  <a  href=" {{ path('updateproduits', {"id": g.id}) }} " class="btn btn-outline-primary"  > update</a>
+
+                                    </td>
+
+                                </tr {% endfor %}>
+
+
+                                </tbody>
+
+                            </table>
+                            <!-- /.endTable -->
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <!-- /.row -->
+        <!-- /.container-fluid -->
+        <div class="input-group">
+            <a href="{{ path('stats') }}"class="btn btn-outline-primary">Statistique</a>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
 {% endblock %}

@@ -3,7 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Reclamation
  *
@@ -23,14 +24,14 @@ class Reclamation
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="le titre est necessaire")
      * @ORM\Column(name="titre", type="string", length=250, nullable=false)
      */
     private $titre;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="le message est necessaire")
      * @ORM\Column(name="message", type="string", length=250, nullable=false)
      */
     private $message;
@@ -41,6 +42,122 @@ class Reclamation
      * @ORM\Column(name="iduser", type="integer", nullable=false)
      */
     private $iduser;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class )
+     */
+    private $users;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $etat;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $createdAt;
+
+    public function getUsers(): ?User
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?User $users): self
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param string $titre
+     */
+    public function setTitre(string $titre): void
+    {
+        $this->titre = $titre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param string $message
+     */
+    public function setMessage(string $message): void
+    {
+        $this->message = $message;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIduser(): ?int
+    {
+        return $this->iduser;
+    }
+
+    /**
+     * @param int $iduser
+     */
+    public function setIduser(int $iduser): void
+    {
+        $this->iduser = $iduser;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(int $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
 
 
 }

@@ -1,0 +1,12 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+{% block title %}New Abonnement{% endblock %}
+
+{% block body %}
+<center>  <h1>New Abonnement</h1> </center>
+
+    <center>  {{ include('abonnement/_form.html.twig') }}</center>
+
+<center>  <a href="{{ path('app_abonnement_index') }}">back to list</a> </center>
+{% endblock %}
+{% endblock %}

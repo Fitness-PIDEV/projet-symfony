@@ -1,0 +1,64 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <center>
+        <div class="container">
+            <div class="col-md-9">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>"Reservation"</li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+            <div class="content-wrapper">
+                <h1>Reservation index</h1>
+                <div class="box">
+                    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dispo</th>
+                <th>NomCours</th>
+                <th>Date</th>
+                <th>NbrParticipant</th>
+
+                <th>Nom</th>
+                <th colspan="2">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>
+                    <label type="number" class="form-control">{{ reservation.dispo }}</label>
+                </td>
+                <td>{{ reservation.nomCours }}</td>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <label type="number" class="form-control">{{reservation.nbrParticipant}}</label>
+                </td>
+                <td>{{ reservation.nom }}</td>
+                <td colspan="2">
+                    <a class="btn btn-primary navbar-btn" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
+                    <a class="btn btn-primary navbar-btn" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary navbar-btn" href="{{ path('app_reservation_new') }}">Create new</a>
+</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </center>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Hello LivraisonController!{% endblock %}
+
+{% block body %}
+
+    <div class="content-wrapper" style="min-height: 1335.69px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Gestion Livraison</h1>
+                    </div>
+
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <!-- /.row -->
+
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Liste des Livraisons</h3>
+
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th> idUser </th>
+                                        <th> refCommande </th>
+                                        <th> donneesUser </th>
+                                        <th> fraisLivraison </th>
+                                        <th> localisation </th>
+
+
+
+                                        <th>delete</th>
+                                        <th>update</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr {% for g in tablivraison %}>
+                                        <td> {{ g.idUser }}</td>
+                                        <td> {{ g.refCommande}}</td>
+                                        <td> {{ g.donneesUser }}</td>
+                                        <td> {{ g.fraisLivraison }}</td>
+                                        <td>{{ g.localisation }}</td>
+
+
+
+                                        <td>  <a  href=" {{ path('livraisonDelete', {"id": g.idLivraison}) }} " onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')" > delete</a>
+                                        <td>  <a  href=" {{ path('updatelivraison', {"id": g.idLivraison}) }} "  > update</a>
+
+                                        </td>
+
+                                    </tr {% endfor %}>
+
+
+                                    </tbody>
+                                </table>
+                                <!-- /.endTable -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <center>
+                    <div class="pagination">
+                        {{ knp_pagination_render(tablivraison) }}
+
+                    </div>
+                </center>
+
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+            <a href="{{ path('imprimer_f') }}" >imprimer</a>
+
+        </section>
+
+        <!-- /.content -->
+
+        </body>
+        </html>
+    </div>
+
+
+
+{% endblock %}

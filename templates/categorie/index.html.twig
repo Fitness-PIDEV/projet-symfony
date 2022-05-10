@@ -1,0 +1,86 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Hello CategorieController!{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" style="min-height: 1335.69px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Gestion Produit</h1>
+                    </div>
+
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <!-- /.row -->
+
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Liste des Categories</h3>
+
+                                {% for message in app.flashes('success')%}
+                                <div class="alert alert-success">
+
+                                    {{ message }}
+                                    {% endfor %}
+                            </div>
+
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th> nomCategorie </th>
+                                        <th> etat </th>
+
+                                        <th>delete</th>
+                                        <th>update</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr {% for g in tabcat %}>
+                                        <td> {{ g.nomCategorie }}</td>
+                                        <td>{{ g.etat }}</td>
+
+                                        <td>  <a  href=" {{ path('categorieDelete', {"id": g.id}) }} " onclick="return confirm('Êtes-vous sûr de vouloir supprimer?')"class="btn btn-outline-primary"  > delete</a>
+                                        <td>  <a  href=" {{ path('updatecategorie', {"id": g.id}) }} " class="btn btn-outline-primary"  > update</a>
+
+                                        </td>
+
+                                    </tr {% endfor %}>
+
+
+                                    </tbody>
+                                </table>
+                                <!-- /.endTable -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+
+            <div class="input-group">
+               <a href="{{ path('addcategorie') }}" class="btn btn-outline-primary">Ajouter Categorie</a>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+{% endblock %}

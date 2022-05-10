@@ -1,0 +1,12 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+{% block title %}New Workout{% endblock %}
+
+{% block body %}
+    <center>   <h1>New Workout</h1> </center>
+
+    <center>{{ include('workout/_form.html.twig') }}</center>
+
+    <center>  <a href="{{ path('app_workout_index') }}">back to list</a></center>
+{% endblock %}
+{% endblock %}

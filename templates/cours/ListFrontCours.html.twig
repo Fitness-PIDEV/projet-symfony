@@ -1,0 +1,57 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a>
+                    </li>
+                    <li>COURS</li>
+                </ul>
+            </div>
+
+            <div class="col-md-9" style="margin-left: 100px;">
+
+
+                <div class="row products" >
+
+                    {% for g in tabcours %}
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="product"  style="border-radius: 20px;">
+                                <div class="text">
+                                    <h2 style="text-align: center;"><a href="">{{ g.nomCours}} </a></h2>
+                                    <p class="price">{{ g.dureeCours}}</p>
+                                    <p class="price">{{ g.nomCoach}}</p>
+                                    <p class="price">{{ g.salle}}</p>
+                                    <p class="buttons">
+                                        <a  href="{{ path('app_reservation_new')}}" class="btn btn-primary" style="border-radius: 8px;">Reserver</a>
+
+                                    </p>
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.product -->
+                        </div>
+
+                    {% endfor %}
+
+                    <!-- /.col-md-4 -->
+                </div>
+
+                <!-- /.products -->
+            </div>
+</center>
+            <!-- /.col-md-9 -->
+            <!-- /.container -->
+        </div>
+        <center>
+            <div class="pagination">
+                {{ knp_pagination_render(tabcours) }}
+
+            </div>
+        </center>
+    </div>
+{% endblock %}

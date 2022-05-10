@@ -1,0 +1,120 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        h6 {
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 21px;
+        }
+
+        .card-container {
+            background-color: #00008B;
+            border-radius: 5px;
+            box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+            color: #B3B8CD;
+            padding-top: 30px;
+            position: relative;
+            width: 550px;
+            height: 430px;
+            max-width: 100%;
+            text-align: center;
+            margin-left: 32% ;
+            margin-bottom: 30px;
+
+        }
+
+        .card-container .round {
+            border: 1px solid #03BFCB;
+            border-radius: 50%;
+            padding: 7px;
+            width: 200px;
+            height: 200px;
+        }
+
+        a.primary {
+            background-color: #03BFCB;
+            border: 1px solid #03BFCB;
+            border-radius: 3px;
+            color: #231E39;
+            font-family: Montserrat, sans-serif;
+            font-weight: 500;
+            padding: 10px 25px;
+            margin-right: 10px;
+        }
+
+        a.primary.ghost {
+            background-color: transparent;
+            color: #02899C;
+            margin-bottom: 30px;
+        }
+
+    </style>
+
+
+    <!-- breadcrumb-section -->
+ {#   <div id="all">
+
+    <div id="content" style="margin-left: 450px">
+    <div class="container">
+
+    <div class="col-md-6">
+    <div class="box">
+        <h1 style="text-align: center">Mon profile</h1>
+    <!-- end breadcrumb section -->
+    <div style="text-align: center">
+        <img style="margin-left: 150px" class="class=img-circle img-responsive" src="{{ asset('photo/' ~ app.user.image) }}" alt="" width="200" heigth="200">
+        <h4>Nom: {{ app.user.nom}}</h4><br>
+        <h4>Prenom: {{ app.user.prenom}}</h4><br>
+        <h4>Email: {{ app.user.email}}</h4><br>
+        <h4>Numero Téléphone: {{ app.user.num}}</h4><br>
+
+        <a class="btn btn-primary" href="{{ path('profile_edit', {"id": app.user.id}) }}" >Modifier mon profile</a>
+        <a class="btn btn-primary" href="{{ path('profile_password')}}" >Modifier mon mot de passe</a>
+
+
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>#}
+    <!--
+Because Bart Simpson had a birthday (1 April), I pour UI demos in his honor with; enjoy :D
+-->
+    <div class="card-container">
+        <img class="round" src="{{ asset('photo/' ~ app.user.image) }}" />
+        <h3>{{ app.user.prenom}} {{ app.user.nom}}</h3>
+        <h6>{{ app.user.role}}</h6>
+        <p>{{ app.user.email}} <br/> {{ app.user.num}}</p>
+        <div class="buttons">
+            <a class="primary" href="{{ path('profile_edit', {"id": app.user.id}) }}">
+                Modifier
+            </a>
+            <a class="primary ghost"  href="{{ path('profile_password')}}">
+                Mot de passe
+            </a>
+        </div>
+
+    </div>
+
+
+{% endblock %}

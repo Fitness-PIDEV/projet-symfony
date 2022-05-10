@@ -1,0 +1,74 @@
+{% extends 'base-back.html.twig' %}
+
+{% block content %}
+{% block title %}Workout index{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+<center>   <h1>Workout index</h1> </center>
+        <center>  <div>
+            <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+                <img src="https://img.icons8.com/nolan/344/google-web-search.png" style="width:50px;height:50px;"/></p>
+
+        </div> </center>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NomMuscle</th>
+                <th>NomExercice</th>
+                <th>ImageExercice</th>
+                <th>Description</th>
+                <th>DureeExercice</th>
+            <th>  <a class="btn btn-primary navbar-btn" href="{{ path('app_workout_new') }}">Create new</a> <th>
+
+        </thead>
+        <tbody>
+        <tbody>
+        <tbody>
+        <tbody id="myTable">
+        {% for workout in workouts %}
+            <tr>
+                <td>{{ workout.nomMuscle }}</td>
+                <td>{{ workout.nomExercice }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ workout.imageExercice) }}" height="100px" width="100px"></td>
+                <td>{{ workout.description }}</td>
+                <td>{{ workout.dureeExercice }}</td>
+                <td>
+                    <a class="btn btn-primary navbar-btn" href="{{ path('app_workout_edit', {'id': workout.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        <tbody id="search">
+
+        </tbody>
+        </tbody>
+    </table>
+
+
+    <div class="pagination">
+        {{ knp_pagination_render(workouts) }}
+    </div>
+       <center>  <a class="btn btn-primary navbar-btn" href="{{ path('Liste') }}">PDF</a>  </center>
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% endblock %}

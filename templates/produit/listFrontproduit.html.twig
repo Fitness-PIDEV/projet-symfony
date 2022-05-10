@@ -1,0 +1,154 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}SHOP{% endblock %}
+{% block stylesheet %}
+    <style>
+    button {
+    margin-top: 20px;
+    width: auto;
+    border: 1px solid #FF5722;
+    background: #fff;
+    padding: 10px 30px;
+    color: #FF5722;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    }
+    button:hover {
+    width: auto;
+    background: #FF5722;
+    color: #fff;
+    padding: 10px 30px;
+    cursor: pointer;
+    }
+    .cart {
+    margin-top: 10px;
+    width: auto;
+    background: #FF5722;
+    color: #fff;
+    padding: 10px 30px;
+    cursor: pointer;
+    }
+
+    .product-card {
+    background: #FF5722;
+    width: 550px;
+    height: 156px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 70px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+    animation: init 1.5s 0.2s cubic-bezier(0.55, 0.055, 0.275, 0.19) forwards, materia 0.5s .9s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+
+
+
+    <div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a>
+                </li>
+                <li>SHOP</li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+
+
+            <div class="row products">
+                {% for g in tabproduit %}
+                <div class="col-md-4 col-sm-6">
+                    <div class="product"  style="border-radius: 20px;">
+                        <div class="flip-container" style="margin-left: 25px; margin-top: 25px">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="detail.html">
+                                        <img style="width: 200px; height:200px" src="{{ asset('photo/' ~ g.imageProduit) }}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="detail.html">
+                                        <img style="width: 200px; height:200px" src="{{ asset('photo/' ~ g.imageProduit) }}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="invisible">
+                            <img style="width: 200px; height:200px" src="{{ asset('photo/' ~ g.imageProduit) }}" alt="" class="img-responsive">
+                        </a>
+                        <div class="text">
+                            <h3><a href="detail.html">{{ g.nomProduit}} </a></h3>
+                            <p class="price">{{ g.prixProduit}}</p>
+                            <p class="buttons">
+                               <a  href="{{ path('produit_detail', {"id": g.getId()}) }}" class="btn btn-default"  style="border-radius: 8px;">View detail</a>
+                                <br>
+                                <a href="{{ path('addachat', {"id": g.getId()}) }}" class="btn btn-primary"  style="border-radius: 8px;"><i class="fa fa-shopping-cart" ></i>Add to cart</a>
+                            </p>
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.product -->
+                </div>
+                {% endfor %}
+
+                <!-- /.col-md-4 -->
+            </div>
+
+            <!-- /.products -->
+
+
+
+
+        </div>
+        <!-- /.col-md-9 -->
+
+
+        <div class="col-md-3">
+            <!-- *** MENUS AND FILTERS ***
+_________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categories</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked category-menu">
+                        {% for c in tabcategorie %}
+                        <li>
+                            <a href="category.html"> {{ c.nomCategorie }}</a>
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+            </div>
+
+
+    </div>
+
+
+    <!-- /.container -->
+    </div>
+    <center>
+        <div class="pagination">
+            {{ knp_pagination_render(tabproduit) }}
+
+        </div>
+    </center>
+    </div>
+{% endblock %}

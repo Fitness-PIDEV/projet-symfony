@@ -1,0 +1,37 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+{% block title %}Abonnement{% endblock %}
+
+{% block body %}
+    <h1>Abonnement</h1>
+
+<center>  <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Type</th>
+                <td>{{ abonnement.type }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ abonnement.prix }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ abonnement.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ abonnement.prenom }}</td>
+            </tr>
+
+        </tbody>
+    </table> </center>
+
+<center> <a href="{{ path('app_abonnement_index') }}">back to list</a> </center>
+
+    <center>  <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}">edit</a> </center>
+
+   <center> {{ include('abonnement/_delete_form.html.twig') }} </center>
+{% endblock %}
+{% endblock %}

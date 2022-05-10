@@ -1,0 +1,122 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Workout index{% endblock %}
+
+{% block body %}
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a>
+                </li>
+                <li>Workout</li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+
+
+            <div class="row products">
+
+                {% for workout in workouts %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product" style="border-radius: 20px;">
+                            <div class="flip-container" style="margin-left: 25px; margin-top: 25px">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a href="detail.html">
+                                            <img style="width: 200px; height:200px"
+                                                 src="{{ asset('uploads/images/' ~ workout.imageExercice) }}" alt=""
+                                                 class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="back">
+                                        <a href="detail.html">
+                                            <img style="width: 200px; height:200px"
+                                                 src="{{ asset('uploads/images/' ~ workout.imageExercice) }}" alt=""
+                                                 class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="detail.html" class="invisible">
+                                <img style="width: 200px; height:200px"
+                                     src="{{ asset('uploads/images/' ~ workout.imageExercice) }}" alt=""
+                                     class="img-responsive">
+                            </a>
+                            <div class="text">
+                                <h3><a href="detail.html">{{ workout.nomMuscle }} </a></h3>
+                                <p class="price">{{ workout.nomExercice }}</p>
+                                <p class="buttons">
+                                    <a href="{{ path('app_workout_show', {'id': workout.id}) }}tab"
+
+                                       class="btn btn-default" style="border-radius: 8px;">View description</a>
+                                    <br>
+
+
+                                </p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /.product -->
+                    </div>
+                {% endfor %}
+
+
+                <!-- /.col-md-4 -->
+            </div>
+
+            <!-- /.products -->
+
+
+        </div>
+        <!-- /.col-md-9 -->
+
+
+        <div class="col-md-3">
+            <!-- * MENUS AND FILTERS *
+_______________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Muscles</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked category-menu">
+
+                        {% for c in workouts %}
+                            <li>
+                                <a href="{{ path('app_workout_show', {'id': c.id}) }}tab"> {{ c.nomMuscle }}</a>
+
+                            </li>
+
+                        {% endfor %}
+
+
+                    </ul>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+  <center>  <div class="pagination">
+        {{ knp_pagination_render(workouts) }}
+    </div> </center>
+    </div>
+
+
+
+        <!-- /.container -->
+
+
+        {% endblock %}
+
+

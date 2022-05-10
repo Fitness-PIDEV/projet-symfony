@@ -13,6 +13,117 @@ use Doctrine\ORM\Mapping as ORM;
 class Reservation
 {
     /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return ?int
+     */
+    public function getDispo(): ?int
+    {
+        return $this->dispo;
+    }
+
+    /**
+     * @param int $dispo
+     */
+    public function setDispo(int $dispo): void
+    {
+        $this->dispo = $dispo;
+    }
+
+    /**
+     * @return ?string
+     */
+    public function getNomCours(): ?string
+    {
+        return $this->nomCours;
+    }
+
+    /**
+     * @param string $nomCours
+     */
+    public function setNomCours(string $nomCours): void
+    {
+        $this->nomCours = $nomCours;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate(): ?\DateTime
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate(\DateTime $date): void
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return ?int
+     */
+    public function getNbrParticipant(): ?int
+    {
+        return $this->nbrParticipant;
+    }
+
+    /**
+     * @param int $nbrParticipant
+     */
+    public function setNbrParticipant(int $nbrParticipant): void
+    {
+        $this->nbrParticipant = $nbrParticipant;
+    }
+
+    /**
+     * @return ?int
+     */
+    public function getState(): ?int
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param int $state
+     */
+    public function setState(int $state): void
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return ?string
+     */
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom(string $nom): void
+    {
+        $this->nom = $nom;
+    }
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
